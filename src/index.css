@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* Swiper Pagination Styles */
+.swiper-pagination-bullet {
+  width: 0.6rem !important;
+  height: 0.6rem !important;
+  border-radius: 100% !important;
+  background: rgb(251, 251, 251) !important;
+  opacity: 100;
+}
+.swiper-pagination-bullet-active {
+  background: #025afd !important;
+  width: 0.6rem !important;
+  height: 0.6rem !important;
+  border-radius: 100% !important;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px); /* Adjust this value for wave height */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.path1 {
+  animation: wave 4s ease-in-out infinite;
+  animation-delay: 4s; /* No delay */
+}
+
+.path2 {
+  animation: wave 4s ease-in-out infinite;
+  animation-delay: 0s; /* Delay for staggering */
+}
+
+.path3 {
+  animation: wave 4s ease-in-out infinite;
+  animation-delay: 0.6s; /* Delay for staggering */
+}
+
+.path4 {
+  animation: wave 4s ease-in-out infinite;
+  animation-delay: 0.7s; /* Delay for staggering */
+}
