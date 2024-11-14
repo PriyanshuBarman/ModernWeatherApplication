@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { FaArrowRightFromBracket } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
 import { FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useApiData } from "../../Context/ApiContext";
@@ -11,13 +11,14 @@ const ThreeHourlyForecast = () => {
   if (loading) {
     return <ThreeHourlyForecastSkeleton />;
   }
+
   return (
     <div className="h-50 mt- w-full rounded-md bg-inherit">
       <div className="mb- ml-[2%] flex w-[95%] flex-wrap items-center justify-between gap-4 py-1.5 pl-5 pr-2 text-xs font-bold italic text-black/80 dark:text-white/90">
         <h1>3 Hourly Forecast</h1>
-        <span className="flex items-center gap-2">
+        <span className="flex items-center gap-1">
           <h1>Next 5 Days</h1>
-          <FaArrowRightFromBracket />
+          <FaAngleRight />
         </span>
       </div>
       <Swiper
@@ -77,7 +78,6 @@ const Cards = memo(({ epoc, temp, description, description2 }) => {
             className="bg-gray bg-red-00 h-[45%] w-[60%]"
             src={`${description}.png`}
             alt=""
-            loading="lazy"
           />
           <h1 className="dark:text-ts pt-1 text-[.85em] font-[600]">
             {temp}°C

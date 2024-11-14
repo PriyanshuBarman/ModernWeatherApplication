@@ -54,7 +54,6 @@ const CurrentWeatherCard = () => {
         className="absolute left-[1%] top-[-28%] h-[12em] w-[12em] rounded-xl"
         src={`${description}.png`}
         alt=""
-        loading="lazy"
       />
       <div className="absolute right-[7%] top-[14%] flex flex-col items-center justify-center font-oswald text-[3.31em]">
         <h1 className="bg-gradient-to-b from-white via-white to-transparent bg-clip-text font-extrabold leading-tight text-transparent">

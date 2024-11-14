@@ -73,7 +73,6 @@ const DailyForecastCard = ({ index, city }) => {
           className="absolute left-[1%] top-[-28%] h-[12em] w-[12em] rounded-xl capitalize"
           src={`/${description}.png`}
           alt=""
-          loading="lazy"
         />
 
         <div className="absolute right-[4%] top-[15%] flex flex-col items-center justify-center font-oswald text-[3.3em]">

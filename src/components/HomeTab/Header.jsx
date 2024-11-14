@@ -13,7 +13,7 @@ function Header() {
   const { toggleTheme, currentTheme } = useTheme();
   const { openModal } = useSearchModal();
   return (
-    <div className="fixed top-0 z-40 flex h-10 w-full items-center justify-center gap-1 bg-[#EDF0F2] pb-1 pt-2.5 font-oxanium text-[1.2rem] text-black/90 shadow-[inset_1px_-.4px_2px_0px_ttt] dark:bg-[#252525] dark:text-white md:w-[375px]">
+    <div className="fixed top-0 z-40 flex h-10 w-full items-center justify-center gap-1 bg-gradient-to-b from-[#ffffff] via-white to-transparent pb-1 pt-2.5 font-oxanium text-[1.2rem] text-black/90 shadow-[inset_1px_-.4px_2px_0px_ttt] dark:from-[#252525] dark:via-[#252525] dark:to-[#252525] dark:text-white md:w-[375px]">
       {loading ? (
         <h1 className="h-5 w-36 animate-pulse rounded-md bg-black/15 dark:bg-white/15"></h1>
       ) : (

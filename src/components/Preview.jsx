@@ -1,6 +1,6 @@
 import React from "react";
-import { FaCloudversify, FaEye } from "react-icons/fa";
-import { FaWind } from "react-icons/fa6";
+import { FaAngleDoubleDown, FaCloudversify, FaEye } from "react-icons/fa";
+import { FaAnglesDown, FaWind } from "react-icons/fa6";
 import { MdArrowCircleLeft } from "react-icons/md";
 import { PiThermometerBold } from "react-icons/pi";
 import { SiRainmeter } from "react-icons/si";
@@ -43,9 +43,11 @@ export default function Preview() {
 
       <section className="mt-9 flex w-full flex-wrap items-center justify-evenly gap-2">
         <div className="relative mb-4 h-5 w-full">
-          <h1 className="absolute left-0 w-60 -translate-x-3 -skew-x-12 rounded-br-xl bg-blue-400 pl-5 font-[500] text-white">
-            Quick Weather Preview
+        <div className="relative flex h-5 w-full items-center justify-center">
+          <h1 className="flex w-[92%] items-center justify-center rounded-full bg-black/15 py-1.5 text-[.9rem] font-[500] italic leading-4 gap-3 text-black/80 dark:bg-white/10 dark:text-white/80">
+            Quick Weather preview <FaAnglesDown />
           </h1>
+        </div>
         </div>
         <SquareDiv
           unit={feelsLike}
