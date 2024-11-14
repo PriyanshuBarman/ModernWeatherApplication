@@ -39,7 +39,7 @@ export const ApiProvider = ({ children }) => {
         `https://api.openweathermap.org/data/2.5/forecast?q=${inputName}&appid=462af939b63db301f7c3708e452b2874&units=metric`,
       );
       const timeDataPromise = fetch(
-        `/api/v2.1/get-time-zone?key=BEG60N6QBE1T&format=json&by=position&lat=${lat}&lng=${lon}`,
+        `https://api.timezonedb.com/v2.1/get-time-zone?key=BEG60N6QBE1T&format=json&by=position&lat=${lat}&lng=${lon}`,
       );
 
       // Await both promises
