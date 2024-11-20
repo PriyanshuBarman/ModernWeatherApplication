@@ -28,7 +28,8 @@ const DailyForecastCard = ({ index, city }) => {
   const epoc = forecast.dt;
   if (
     description2 === "light rain" ||
-    description2 === "heavy intensity rain"
+    description2 === "heavy intensity rain" ||
+    description2 === "moderate rain"
   ) {
     description = description2;
   }
@@ -75,26 +76,26 @@ const DailyForecastCard = ({ index, city }) => {
           alt=""
         />
 
-        <div className="absolute right-[4%] top-[15%] flex flex-col items-center justify-center font-oswald text-[3.3em]">
+        <div className="absolute right-[5%] top-[15%] flex flex-col items-center justify-center font-oswald text-[3.3em]">
           <h1 className="bg-gradient-to-b from-white via-white to-transparent bg-clip-text font-extrabold leading-tight text-transparent">
             {temp}°C
           </h1>
           <h2 className="flex flex-col items-center font-oxanium text-[.32em] font-[600] md:text-sm">
-            Feels Like{feelsLike}
+            Feels Like {feelsLike}°c
           </h2>
-          <span className="flex items-center justify-center gap-1 font-oxanium">
-            <h1 className="text-xs italic">Wind Direction</h1>
+          <div className="flex items-center justify-center gap-1 font-oxanium">
+            <h1 className="text-xs font-semibold italic">Wind Direction</h1>
             <LiaLocationArrowSolid
               className="size-10"
               style={{
                 transform: `rotate(${windDirection}deg)`,
               }}
             />
-          </span>
+          </div>
         </div>
 
         {/* ------- Description & Day */}
-        <div className="absolute bottom-[35%] left-[9%] flex h-3 w-[57%] flex-col gap-2 text-[1.3em] font-[600] capitalize italic leading-5 md:text-sm">
+        <div className="absolute bottom-[35%] left-[7%] flex h-3 w-[50%] flex-col gap-2 text-[1.3em] font-[600] capitalize italic leading-5 md:text-sm">
           <h1 className="h flex flex-wrap">{description2}</h1>
           <h2 className="text-[.7em] leading-3">{dayName}</h2>
         </div>

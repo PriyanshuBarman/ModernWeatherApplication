@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { FaAngleDown } from "react-icons/fa6";
 import { IoMdSearch } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
 import { useApiData } from "../../Context/ApiContext";
 import { useSearchModal } from "../../Context/SearchModalContext";
 
@@ -62,12 +62,14 @@ const SearchModal = () => {
   const SearchSuggestions = [
     "New York",
     "London",
+    "Paris",
     "Tokyo",
-    "Beijing",
+    "Moscow",
+    "Berlin",
     "Mumbai",
     "Dubai",
-    "New Delhi",
     "Sydney",
+    "Shanghai",
   ];
 
   return (
@@ -80,10 +82,8 @@ const SearchModal = () => {
         }`}
       ></div>
       <div
-        className={`fixed bottom-0 z-50 flex h-[75%] w-full flex-col items-center rounded-t-3xl border-t border-black/50 bg-[#f9f9f9] pt-2.5 font-oxanium text-white shadow-lg transition-all duration-150 ease-linear dark:border-t dark:border-white/50 dark:bg-[#1e1e1e] md:w-[375px] ${
-          isModalOpen
-            ? "translate-y-0 scale-y-100"
-            : "translate-y-[100%] -scale-y-50"
+        className={`fixed bottom-0 z-50 flex h-[75%] w-full flex-col items-center rounded-t-3xl border-t border-black/50 bg-[#f9f9f9] pt-2.5 font-oxanium text-white shadow-lg transition-all duration-75 ease-in-out dark:border-t dark:border-white/50 dark:bg-[#1e1e1e] md:w-[375px] ${
+          isModalOpen ? "translate-y-0" : "translate-y-[100%]"
         }`}
       >
         <label
@@ -92,19 +92,19 @@ const SearchModal = () => {
         ></label>
         <button
           onClick={closeModal}
-          className="absolute right-[9%] top-0 flex h-[6.5%] w-[11%] items-center justify-center rounded-b-xl bg-gray-700 pt-[1%] font-extrabold text-white hover:bg-gray-300 dark:bg-gray-400 dark:text-black dark:hover:bg-gray-700"
+          className="absolute bottom-4 flex size-10 items-center justify-center rounded-full bg-blue-500 text-white dark:bg-white/35 dark:text-black dark:hover:bg-gray-700"
         >
-          <FaAngleDown className="h-[70%] w-full" />
+          <IoClose className="size-[70%]" />
         </button>
 
         <form
-          className="mt-8 flex min-h-12 w-[80%] items-center justify-center rounded-full bg-white px-5 italic shadow-[inset_-0px_-0px_1px_1px] shadow-black/50 dark:bg-black/5 dark:shadow-white/50"
+          className="mt-7 flex min-h-12 w-[80%] items-center justify-center rounded-full bg-white px-5 italic shadow-[inset_-0px_-0px_1px_1px] shadow-black/50 dark:bg-black/5 dark:shadow-white/50"
           onSubmit={(e) => handleSubmit(e, input)}
         >
           <input
             type="text"
             className="h-full w-full bg-transparent text-black placeholder-gray-600 outline-none dark:text-white dark:placeholder-white/85"
-            placeholder={error || "Enter City Name"} // Display error in placeholder
+            placeholder={error || "Search City Name"} // Display error in placeholder
             value={input}
             onChange={(e) => {
               setInput(e.target.value);
@@ -117,8 +117,8 @@ const SearchModal = () => {
           </button>
         </form>
 
-        {/* SEARCH HISTORY */}
-        <div className="w-[66%]">
+        <div className="w-full overflow-y-auto px-16 pb-28">
+          {/* SEARCH HISTORY */}
           {searchHistory.length > 0 && (
             <div className="mt-4">
               <div className="mb-[7%] flex items-center justify-between">
@@ -152,8 +152,8 @@ const SearchModal = () => {
           )}
           {/* SEARCH SUGGESTIONS */}
           <div className="mt-[10%]">
-            <h1 className="mb-2 text-sm underline italic font-semibold text-gray-600 dark:text-gray-400">
-            World's Famous Cities
+            <h1 className="mb-2 text-sm font-semibold italic text-gray-600 underline dark:text-gray-400">
+              Famous Cities
             </h1>
             <ul className="flex w-full cursor-pointer flex-wrap items-center justify-between gap-3 text-center text-sm italic text-gray-600 dark:text-gray-400">
               {SearchSuggestions.map((item, i) => (
@@ -174,4 +174,3 @@ const SearchModal = () => {
 };
 
 export default SearchModal;
-

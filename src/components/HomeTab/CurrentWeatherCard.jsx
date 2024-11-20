@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { LiaLocationArrowSolid } from "react-icons/lia";
 import { useApiData } from "../../Context/ApiContext";
 import { useTime } from "../../Context/TimeContext";
 import CardSkeleton from "../../Skeletons/CardSkeleton";
@@ -6,8 +7,16 @@ import CardSkeleton from "../../Skeletons/CardSkeleton";
 const CurrentWeatherCard = () => {
   const { epochDayConverter } = useTime();
   const { currentData, loading, timeZone } = useApiData();
-  let { temp, minTemp, maxTemp, feelsLike, description, description2, epoc } =
-    currentData;
+  let {
+    temp,
+    minTemp,
+    maxTemp,
+    feelsLike,
+    windDirection,
+    description,
+    description2,
+    epoc,
+  } = currentData;
 
   if (loading == true) {
     return <CardSkeleton />;
@@ -17,7 +26,8 @@ const CurrentWeatherCard = () => {
 
   if (
     description2 === "light rain" ||
-    description2 === "heavy intensity rain"
+    description2 === "heavy intensity rain" ||
+    description2 === "moderate rain"
   ) {
     description = description2;
   }
@@ -62,13 +72,19 @@ const CurrentWeatherCard = () => {
 
         <h2 className="flex flex-col items-center font-oxanium text-[.32em] font-[600] md:text-sm">
           Feels like {feelsLike}°c
-          <span className="mt-[5%] text-[1.2em] font-bold italic text-white/55">
-            {minTemp} | {maxTemp}
-          </span>
         </h2>
+        <div className="flex items-center justify-center gap-1 font-oxanium">
+          <h1 className="text-xs font-semibold italic">Wind Direction</h1>
+          <LiaLocationArrowSolid
+            className="size-10"
+            style={{
+              transform: `rotate(${windDirection}deg)`,
+            }}
+          />
+        </div>
       </div>
       {/* Description & Day */}
-      <div className="absolute bottom-[35%] left-[9%] flex h-3 w-[58%] flex-col gap-2 text-[1.3em] font-[600] capitalize italic leading-5 md:text-sm">
+      <div className="absolute bottom-[35%] left-[7%] flex h-3 w-[50%] flex-col gap-2 text-[1.3em] font-[600] capitalize italic leading-5 md:text-sm">
         <h1 className="h flex flex-wrap">{description2}</h1>
         <h2 className="text-[.7em] leading-3">{dayName}</h2>
       </div>

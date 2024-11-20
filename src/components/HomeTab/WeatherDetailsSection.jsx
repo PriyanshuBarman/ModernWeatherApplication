@@ -31,11 +31,11 @@ const WeatherDetailsSection = () => {
             unit={currentData.humidity}
             title={"Humidity"}
             unitname={"%"}
-            icon={<SiRainmeter className="h-full w-12" />}
+            icon={<SiRainmeter className="h-full w-11" />}
           />
           <SquareDiv
             unit={currentData.clouds}
-            title={"Cloudiness"}
+            title={"Clouds"}
             unitname={"%"}
             icon={<FaCloudversify className="h-12 w-14" />}
           />
@@ -44,28 +44,28 @@ const WeatherDetailsSection = () => {
             unit={currentData.windSpeed}
             title={"Wind"}
             unitname={"km/h"}
-            icon={<FaWind className="h-full w-9" />}
+            icon={<FaWind className="h-full w-8" />}
           />
           {loading ? (
             <SquareDivSkeleton />
           ) : (
             <>
               {/* Wind Direction */}
-              <div className="relative mb-4 flex h-[7.9rem] w-[8.9rem] flex-col items-center justify-between rounded-[1.1em] rounded-tl-md bg-white/25 pb-1 pr-3 pt-3 shadow-[3px_5px_5px_.2px] shadow-black/50 active:shadow-[inset_2px_3px_5px_.1px] dark:bg-black/5 dark:text-white dark:shadow-black">
+              <div className="relative mb-4 flex h-[7.6rem] w-[8.9rem] flex-col items-center justify-between rounded-[1.1em] rounded-tl-md bg-white/25 pb-1 pr-3 pt-3 shadow-[3px_5px_5px_.2px] shadow-black/50 active:shadow-[inset_2px_3px_5px_.1px] dark:bg-black/5 dark:text-white dark:shadow-black">
                 <div className="w-full">
                   <h1 className="text- flex h-[1.55rem] w-[79%] items-center rounded-r-md bg-gradient-to-l from-transparent to-black/25 pl-3 text-start text-[.85em] font-[500] italic leading-3 dark:rounded-l-sm dark:to-white/40 dark:text-white/80">
                     Wind Direction
                   </h1>
                 </div>
-                <div className="flex w-full items-center justify-center">
+                <div className="mb-3 flex w-full items-center justify-center">
                   <LiaLocationArrowSolid
-                    className="h-full w-20 text-black/60 dark:text-slate-200"
+                    className="h-full w-[4.5rem] text-black/60 dark:text-slate-200"
                     style={{
                       transform: `rotate(${currentData.windDirection}deg)`,
                     }}
                   />
                 </div>
-                <div className="absolute bottom-[8%] left-[10%] h-2 w-[80%] -skew-x-12 bg-black/15 dark:bg-white/20"></div>
+                <div className="absolute bottom-[8%] left-[10%] h-[.45rem] w-[80%] -skew-x-12 bg-black/15 dark:bg-white/20"></div>
               </div>
             </>
           )}

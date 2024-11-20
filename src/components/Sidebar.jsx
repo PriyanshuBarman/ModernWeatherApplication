@@ -1,23 +1,14 @@
 import React, { useState } from "react";
-import {
-  FaChevronDown,
-  FaChevronLeft,
-  FaCloudSun,
-  FaHome,
-  FaSearch,
-  FaSearchengin,
-} from "react-icons/fa";
-import {
-  MdDarkMode,
-  MdOutlineLightMode,
-  MdOutlineSettingsBrightness,
-} from "react-icons/md";
+import { FaChevronDown, FaChevronLeft } from "react-icons/fa";
+import { IoMdMoon, IoMdSearch } from "react-icons/io";
+import { MdOutlineSettingsBrightness } from "react-icons/md";
+import { PiSunDimFill } from "react-icons/pi";
+import { TbHomeFilled } from "react-icons/tb";
+import { TiChartLine } from "react-icons/ti";
 import { NavLink } from "react-router-dom";
 import { useSearchModal } from "../Context/SearchModalContext";
 import { useSidebar } from "../Context/SidebarContext";
 import { useTheme } from "../Context/ThemeContext";
-import { IoMdMoon, IoMdSearch } from "react-icons/io";
-import { TbHomeFilled } from "react-icons/tb";
 
 const Sidebar = () => {
   const { openModal } = useSearchModal();
@@ -35,7 +26,7 @@ const Sidebar = () => {
         }`}
       >
         {/* Sidebar container */}
-        <div
+        <aside
           onClick={(e) => e.stopPropagation()}
           className={`Sidebar absolute left-0 top-0 z-50 h-full w-2/4 transform bg-gray-100 text-black transition-transform duration-300 ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
@@ -92,7 +83,7 @@ const Sidebar = () => {
                 }
                 onClick={closeSidebar}
               >
-                <FaCloudSun className="mr-2" /> Forecast
+                <TiChartLine className="mr-2 size-6" /> Forecast
               </NavLink>
             </li>
 
@@ -107,7 +98,7 @@ const Sidebar = () => {
             >
               <div className="flex items-center gap-4">
                 <span className="flex items-center">
-                  <MdOutlineSettingsBrightness className="mr-2 size-5" /> Theme
+                  <MdOutlineSettingsBrightness className="mr-2 size-6" /> Theme
                 </span>
                 <FaChevronDown
                   className={`transition-transform ${
@@ -128,7 +119,7 @@ const Sidebar = () => {
                       closeSidebar();
                     }}
                   >
-                    <MdOutlineLightMode className="mr-2" /> Light
+                    <PiSunDimFill className="mr-2" /> Light
                   </li>
                   <li
                     className={`flex cursor-pointer items-center rounded-l-md pl-4 hover:text-blue-500 dark:hover:text-blue-400 ${
@@ -146,7 +137,7 @@ const Sidebar = () => {
               )}
             </li>
           </ul>
-        </div>
+        </aside>
       </div>
     </>
   );

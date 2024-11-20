@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <div className="fixed top-0 flex h-[53vh] w-full flex-col items-center justify-center bg-gradient-to-t from-blue-500 via-blue-100 to-white/95 pb-[2%] shadow-md shadow-black dark:from-blue-100 dark:via-white/10 dark:to-white/5 md:w-[375px]">
       <Swiper
-        className="h-[77%] w-full"
+        className="h-[75%] w-full"
         spaceBetween={10}
         slidesPerView={1}
         centeredSlides={true}

@@ -11,7 +11,7 @@ export const ApiProvider = ({ children }) => {
   const [err, setErr] = useState();
 
   useEffect(() => {
-    fetchAllData("New Delhi");
+    fetchAllData("New York");
   }, []);
 
   const fetchAllData = async (inputName) => {
@@ -27,7 +27,7 @@ export const ApiProvider = ({ children }) => {
       // Check for valid weather data
       if (!weatherResponse.ok || !weatherData.coord) {
         throw new Error(
-          "City Not Found. Please check the spelling, or try searching for another city.",
+          "City not found. Please check the spelling, or try searching for another city.",
         );
       }
 

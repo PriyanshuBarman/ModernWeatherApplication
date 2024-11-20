@@ -68,15 +68,15 @@ const SunriseSunset = () => {
   const dayLight = `${Math.floor(totalMinutes / 60)}h ${totalMinutes % 60}min`;
 
   return (
-    <div className="relative mt-4 flex w-[95%] flex-col items-center overflow-hidden rounded-2xl rounded-tl-xl border-r border-t border-black/30 bg-[#ffffff] text-xs shadow-[2px_4px_5px_.2px] shadow-black/50 active:shadow-[0px_-1px_2px_0px] dark:border-white/5 dark:bg-[#1f1f1f] dark:text-white/90 dark:shadow-black">
+    <div className="relative mt-2.5 flex w-[93%] flex-col items-center overflow-hidden rounded-2xl rounded-tl-xl border-r border-t border-black/5 bg-white/25 text-xs shadow-[1px_3px_4px_0px] shadow-black/50 active:shadow-[0px_-1px_2px_0px] dark:border-white/5 dark:bg-[#1f1f1f] dark:text-white/90 dark:shadow-black">
       <h1 className="absolute top-0 mt-1 flex items-center rounded-b-xl px-4 font-[500] leading-3">
         {currentTime}
       </h1>
-      <h1 className="absolute left-0 top-0 -skew-x-12 whitespace-pre rounded-br-3xl bg-[#d1d1d1] py-0.5 pl-4 pr-5 text-[.67rem] font-[500] dark:bg-white/20">
+      <h1 className="absolute left-0 top-0 -skew-x-12 whitespace-pre rounded-br-3xl bg-[#d1d1d1] py-[.06rem] pl-3 pr-4 text-[.66rem] font-[500] dark:bg-white/20">
         Daylight: {dayLight}
       </h1>
 
-      <div className="relative mt-1 flex h-[15em] w-full items-center justify-center">
+      <div className="relative mt-1 flex h-[10rem] w-full items-center justify-center">
         <svg viewBox="0 0 100 100" className="h-full w-full">
           <path
             d="M 10 50 A 40 40 0 0 1 90 50" // Left to right path (sunrise to sunset)
@@ -112,28 +112,28 @@ const SunriseSunset = () => {
         </svg>
 
         <div className="absolute flex h-[.077rem] w-full items-center justify-center bg-black/50 dark:bg-white/50">
-          <div className="absolute w-[21%] rounded-full border-b border-t border-white/50 bg-[#333333] py-[.3%] text-center text-[75%] font-[500] italic leading-3 text-white dark:bg-[#504f4f]">
+          <div className="absolute w-[21%] rounded-full border-b border-t border-white/30 bg-[#504f4f] text-center text-[75%] font-[500] italic leading-3 text-white">
             Horizon
           </div>
 
           {/* Sunrise Sunset */}
           <div className="absolute right-0 flex h-5 w-full items-center justify-center">
-            <h1 className="absolute bottom-2.5 left-5 flex flex-col text-[.9rem] font-[600] italic dark:text-white/70">
+            <h1 className="absolute left-7 flex flex-col gap-y-1 text-[.88rem] font-[600] italic dark:text-white/70">
               Sunrise
               <span className="text-[.9em] font-[500]">{sunrise}</span>
             </h1>
-            <h1 className="absolute bottom-2.5 right-6 flex flex-col text-[.9rem] font-[600] italic dark:text-white/70">
+            <h1 className="absolute right-7 flex flex-col gap-y-1 text-[.88rem] font-[600] italic dark:text-white/70">
               Sunset
               <span className="text-[.9em] font-[500]">{sunset}</span>
             </h1>
           </div>
           {/* Day Night */}
-          <div className="absolute bottom-5 flex size-10 flex-col items-center justify-center gap-1">
+          <div className="absolute bottom-3 flex size-10 flex-col items-center justify-center gap-1">
             <PiSunFill className="size-[46%] text-orange-400" />
             <h1 className="text-[1em] font-[500] italic">Day</h1>
           </div>
-          <div className="absolute top-5 flex size-10 flex-col items-center justify-center gap-2">
-            <BsFillMoonStarsFill className="size-[30%] text-gray-400" />
+          <div className="absolute top-3 flex size-10 flex-col items-center justify-center gap-2">
+            <BsFillMoonStarsFill className="size-[30%] dark:text-gray-400 text-gray-600" />
             <h2 className="text-[1em] font-[500] italic">Night</h2>
           </div>
         </div>

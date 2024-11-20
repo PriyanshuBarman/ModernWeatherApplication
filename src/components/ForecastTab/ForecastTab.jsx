@@ -9,11 +9,10 @@ import ThreeHourlyChart from "../Charts/ThreeHourlyChart";
 import Footer from "../Footer";
 import DailyCards from "./DailyCards";
 import ThreeHourlyCards from "./ThreeHourlyCards";
-
 const DailyChart = lazy(() => import("../Charts/DailyChart"));
 
 const ForecastTab = () => {
-  const { dailyData, threeHourlyData } = useApiData();
+  const { dailyData, threeHourlyData, loading } = useApiData();
   const navigate = useNavigate();
   const handleBackClick = () => navigate(-1);
 
@@ -35,7 +34,7 @@ const ForecastTab = () => {
           <MdArrowCircleLeft className="h-full w-full" />
         </button>
         <h1 className="text-[1.18em] font-semibold italic">
-          Forecast{" "}
+          Forecast
           <span className="text-sm">
             ({activeSlideIndex === 0 ? " Daily " : " 3 Hourly "})
           </span>
@@ -49,8 +48,8 @@ const ForecastTab = () => {
       >
         <SwiperSlide className="slide-1 flex h-full flex-col items-center justify-center pt-12">
           <DailyChart />
-          <div className="mt-6 flex w-full flex-col items-center justify-center gap-4 rounded-t-3xl bg-[#f6f5f5] dark:border-white/10 dark:bg-black/10 dark:text-inherit">
-            <h1 className="ml-16 mt-4 w-full text-sm font-semibold italic">
+          <div className="mt-6 flex w-full flex-col items-center justify-center gap-y-4 rounded-t-3xl bg-[#f6f5f5] dark:border-white/10 dark:bg-black/10 dark:text-inherit">
+            <h1 className="ml-[4.4rem] mt-4 w-full text-[.9rem] font-semibold italic">
               Next 5 Days
             </h1>
             {dailyData &&
@@ -59,7 +58,7 @@ const ForecastTab = () => {
                   key={index}
                   index={index}
                   temp={Math.round(item.main.temp)}
-                  feelsLike={item.main.feels_like}
+                  feelsLike={Math.round(item.main.feels_like)}
                   description={item.weather[0].main}
                   description2={item.weather[0].description}
                   epoc={item.dt}
@@ -75,10 +74,10 @@ const ForecastTab = () => {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className="slide-2 flex w-full flex-col items-center justify-center pt-7">
+        <SwiperSlide className="slide-2 flex w-full flex-col items-center justify-center pt-12">
           <ThreeHourlyChart />
-          <div className="z-10 mt-6 flex w-full flex-col items-center justify-center gap-4 rounded-t-3xl bg-[#f6f5f5] dark:border-white/10 dark:bg-black/10 dark:text-inherit">
-            <h1 className="ml-16 mt-4 w-full text-sm font-semibold italic">
+          <div className="z-10 mt-6 flex w-full flex-col items-center justify-center gap-y-4 rounded-t-3xl bg-[#f6f5f5] dark:border-white/10 dark:bg-black/10 dark:text-inherit">
+            <h1 className="ml-[4.4rem] mt-4 w-full text-[.88rem] font-semibold italic">
               Next 5 Days (3 hourly)
             </h1>
             {threeHourlyData &&
@@ -87,7 +86,8 @@ const ForecastTab = () => {
                   key={index}
                   index={index}
                   temp={Math.round(item.main.temp)}
-                  feelsLike={item.main.feels_like}
+                  feelsLike={Math.round(item.main.feels_like)}
+                  windDirection={item.wind.deg + 180}
                   description={item.weather[0].main}
                   description2={item.weather[0].description}
                   epoc={item?.dt}

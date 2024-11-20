@@ -10,11 +10,12 @@ export default function ThreeHourlyForecastSkeleton() {
       </div>
 
       {/* Cards/Slides Container */}
-      <div className="flex gap-4 pl-6 pt-2">
-        <div className="group relative flex h-[7rem] w-[4.09rem] animate-pulse justify-center rounded-[1.7em] bg-black/10 dark:bg-white/5"></div>
-        <div className="group relative flex h-[7rem] w-[4.09rem] animate-pulse justify-center rounded-[1.7em] bg-black/10 dark:bg-white/5"></div>
-        <div className="group relative flex h-[7rem] w-[4.09rem] animate-pulse justify-center rounded-[1.7em] bg-black/10 dark:bg-white/5"></div>
-        <div className="group relative flex h-[7rem] w-[4.09rem] animate-pulse justify-center rounded-[1.7em] bg-black/10 dark:bg-white/5"></div>
+      <div className="flex gap-4 pl-5 pt-2">
+        <div className="group relative flex h-[6.5rem] w-[3.75rem] animate-pulse justify-center rounded-[1.7em] bg-black/10 dark:bg-white/5"></div>
+        <div className="group relative flex h-[6.5rem] w-[3.75rem] animate-pulse justify-center rounded-[1.7em] bg-black/10 dark:bg-white/5"></div>
+        <div className="group relative flex h-[6.5rem] w-[3.75rem] animate-pulse justify-center rounded-[1.7em] bg-black/10 dark:bg-white/5"></div>
+        <div className="group relative flex h-[6.5rem] w-[3.75rem] animate-pulse justify-center rounded-[1.7em] bg-black/10 dark:bg-white/5"></div>
+        <div className="group relative flex h-[6.6rem] w-[2.9rem] animate-pulse justify-center rounded-l-[1.7em] bg-black/10 dark:bg-white/5"></div>
       </div>
     </div>
   );

@@ -22,8 +22,8 @@ const ThreeHourlyForecast = () => {
         </span>
       </div>
       <Swiper
-        className="pb-5 pl-14 pt-[1.2%]"
-        spaceBetween={75}
+        className="pb-5 pl-10 pt-[1.2%]"
+        spaceBetween={45}
         slidesPerView={5}
         modules={[FreeMode]}
         freeMode={true}
@@ -56,7 +56,8 @@ const Cards = memo(({ epoc, temp, description, description2 }) => {
 
   if (
     description2 === "light rain" ||
-    description2 === "heavy intensity rain"
+    description2 === "heavy intensity rain" ||
+    description2 === "moderate rain"
   ) {
     description = description2;
   }
@@ -64,7 +65,7 @@ const Cards = memo(({ epoc, temp, description, description2 }) => {
   return (
     <div className="container flex w-full flex-col items-center justify-center">
       <div
-        className={`dark:text-tp group relative flex h-[7rem] w-[4.09em] justify-center overflow-hidden rounded-[1.7em] bg-[#f6f6f6] shadow-[2px_.75px_2px_0px] shadow-black hover:bg-[#499afe] hover:text-white dark:bg-[#1f1f1f]`}
+        className={`dark:text-tp group relative flex h-[6.5rem] w-[3.75rem] justify-center overflow-hidden rounded-[1.7em] bg-[#f6f6f6] shadow-[2px_.75px_2px_0px] shadow-black hover:bg-[#499afe] hover:text-white dark:bg-[#1f1f1f]`}
       >
         <div className="absolute left-0 top-[15%] flex w-full flex-col justify-center space-y-0.5 overflow-hidden text-center font-semibold italic leading-[.6rem]">
           <h2 className="rounded-xl text-center font-mono text-[.5rem] leading-[.45rem]">
@@ -75,12 +76,12 @@ const Cards = memo(({ epoc, temp, description, description2 }) => {
 
         <div className="flex size-full flex-col items-center justify-center pb-1 pt-5">
           <img
-            className="bg-gray bg-red-00 h-[45%] w-[60%]"
+            className="bg-gray bg-red-00 h-[50%] w-[65%]"
             src={`${description}.png`}
             alt=""
           />
           <h1 className="dark:text-ts pt-1 text-[.85em] font-[600]">
-            {temp}°C
+            {temp}°c
           </h1>
         </div>
       </div>

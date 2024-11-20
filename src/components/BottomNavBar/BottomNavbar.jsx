@@ -1,23 +1,23 @@
 import { FaSearch } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
-import { TiChartLine } from "react-icons/ti";
 import { TbHomeFilled } from "react-icons/tb";
+import { TiChartLine } from "react-icons/ti";
+import { NavLink } from "react-router-dom";
 import { useSearchModal } from "../../Context/SearchModalContext";
 
 const BottomNavbar = () => {
   const { openModal } = useSearchModal();
   return (
     <>
-      <nav className="fixed bottom-0 z-40 m-auto flex h-[3.1em] w-full items-stretch justify-around rounded-t-2xl border-t border-black/30 bg-[#fcfbfb] px-[2%] py-[.5%] backdrop-blur-xl dark:border-white/20 dark:bg-[#1b1b1b] md:w-[375px]">
+      <nav className="fixed bottom-0 z-40 m-auto flex h-[2.85rem] w-full items-stretch justify-around rounded-t-2xl border-t border-black/30 bg-[#fcfbfb] px-2 py-0.5 backdrop-blur-xl dark:border-white/20 dark:bg-[#1b1b1b] md:w-[375px]">
         <HomeTab />
 
         {/* Search Tab */}
         <div className="search flex h-full w-[30%] items-center justify-center">
           <div
             onClick={() => openModal()}
-            className="Search flex h-[88%] w-[100%] cursor-pointer items-center justify-center rounded-full bg-blue-500 shadow-md shadow-black/60 transition-all ease-linear  dark:bg-white/15"
+            className="Search flex h-[88%] w-[100%] cursor-pointer items-center justify-center rounded-full bg-blue-500 shadow-md shadow-black/60 transition-all ease-linear dark:bg-white/15"
           >
-            <FaSearch className="size-[60%] text-white/80 transition-all duration-300 ease-linear hover:rotate-45" />
+            <FaSearch className="size-[60%] text-white/90 transition-all duration-300 ease-linear hover:rotate-45" />
           </div>
         </div>
         {/* Search Tab End//=== */}
@@ -35,7 +35,7 @@ function HomeTab() {
     <NavLink
       to={"/"}
       className={({ isActive }) =>
-        ` ${isActive ? "text-blue-500" : "dark:text-white/80 text-black"}`
+        ` ${isActive ? "text-blue-500" : "text-black dark:text-white/80"}`
       }
     >
       <div
@@ -55,7 +55,7 @@ function ForecastTab() {
     <NavLink
       to={"/Forecast"}
       className={({ isActive }) =>
-        ` ${isActive ? "text-blue-500" : "dark:text-white/80 text-black"}`
+        ` ${isActive ? "text-blue-500" : "text-black dark:text-white/80"}`
       }
     >
       <div

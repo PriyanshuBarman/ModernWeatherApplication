@@ -15,7 +15,7 @@ import { Line } from "react-chartjs-2";
 import { useApiData } from "../../Context/ApiContext";
 import { useTheme } from "../../Context/ThemeContext";
 import { useTime } from "../../Context/TimeContext";
-import DailyChartSkeleton from "../../Skeletons/DailyChartSkeleton";
+import ThreeHourlyChartSkeleton from "../../Skeletons/ThreeHourlyChartSkeleton";
 
 ChartJS.register(
   CategoryScale,
@@ -117,15 +117,15 @@ const ThreeHourlyChart = () => {
   };
 
   if (loading) {
-    return <DailyChartSkeleton />;
+    return <ThreeHourlyChartSkeleton />;
   }
 
   return (
-    <div className="relative z-10 mt-5 w-[95%] space-y-1 overflow-hidden rounded-2xl bg-white/90 to-transparent px-3 pt-1 shadow-md shadow-black/80 dark:bg-[#1f1f1f]">
-      <h1 className="absolute left-0 top-0 dark:text-white/85 w-[45%] rounded-br-3xl bg-[#cecece] pb-0.5 pr-2 pt-1 text-center text-[.79rem] font-[500] italic leading-4 dark:bg-white/20">
-        Today's Overview
+    <div className="relative z-10 w-[95%] space-y-1 overflow-hidden rounded-2xl bg-white/90 to-transparent px-3 shadow-md shadow-black/80 dark:bg-[#1f1f1f]">
+      <h1 className="absolute left-0 top-0 w-[45%] rounded-br-3xl bg-[#cecece] pb-0.5 pr-2 pt-1 text-center text-[.79rem] font-[500] italic leading-4 dark:bg-white/20 dark:text-white/85">
+        3 hourly forecast
       </h1>
-      <div className="overflow-x-auto pb-2 pt-8">
+      <div className="overflow-x-auto pb-0.5 pt-10">
         <div style={{ width: "100%" }}>
           <Line data={getData()} options={options} />
         </div>

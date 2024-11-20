@@ -223,7 +223,7 @@ const DailyChart = () => {
     <div className="z-10 w-[95%] space-y-1 rounded-2xl bg-white/90 to-transparent px-2 pb-[1%] pt-3 shadow-md shadow-black/80 dark:bg-[#1f1f1f]">
       <h1 className="flex w-full items-center justify-between px-2 text-sm font-semibold italic dark:text-white/70">
         Next 5 days 
-        <span className="rounded-full bg-black/5 px-2 text-[.8em] italic text-black/85 dark:bg-white/30">
+        <span className="rounded-full bg-black/10 px-2 text-[.8em] italic text-black/85 dark:bg-white/30">
           Temperature
         </span>
       </h1>

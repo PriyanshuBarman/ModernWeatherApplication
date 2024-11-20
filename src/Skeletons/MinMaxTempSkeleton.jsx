@@ -2,7 +2,7 @@ import React from "react";
 
 export default function MinMaxTempSkeleton() {
   return (
-    <div className="relative mb-2 flex h-[6rem] w-[97%] animate-pulse items-center justify-between overflow-hidden rounded-xl border-white/20 bg-white/25 dark:bg-black px-3 shadow-md shadow-black/40">
+    <div className="relative mb-2 flex h-[5.75rem] w-[97%] animate-pulse items-center justify-between overflow-hidden rounded-xl border-white/20 bg-white/25 dark:bg-black px-3 shadow-md shadow-black/40">
       {/* Animated Underline */}
       <div className="absolute bottom-0 h-full w-[60%] translate-x-[80%] -skew-x-12 rounded-lg bg-gray-500 opacity-30 dark:bg-white/50" />
 
