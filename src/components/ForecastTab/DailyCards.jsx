@@ -2,32 +2,25 @@ import React, { memo, useMemo } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useApiData } from "../../Context/ApiContext";
-import { useTime } from "../../Context/TimeContext";
 import DailyCardsSkeleton from "../../Skeletons/DailyCardsSkeleton";
+import { getImageName } from "../../utils/getImageName";
+import { epochDayConverter } from "../../utils/TimeProvider";
 
 const DailyCards = ({
   index,
   temp,
+  epoc,
   feelsLike,
   description,
-  description2,
-  epoc,
+  isDayOrNight,
 }) => {
-  // Corrected here
   const { currentData, timeZone, loading } = useApiData();
-  const { epochDayConverter } = useTime();
   const dayName = useMemo(() => epochDayConverter(epoc, timeZone), [timeZone]);
+  const imageName = getImageName(description, isDayOrNight);
+
   const navigate = useNavigate();
   const handleClick = () => navigate(`/Forecast/${index}`);
 
-  // Logic to update description based on weather conditions
-  if (
-    description2 === "light rain" ||
-    description2 === "heavy intensity rain" ||
-    description2 === "moderate rain"
-  ) {
-    description = description2;
-  }
   if (loading) {
     return <DailyCardsSkeleton />;
   }
@@ -39,17 +32,17 @@ const DailyCards = ({
       <h1 className="absolute left-0 top-0 w-[32%] rounded-br-2xl bg-black/15 text-center text-[.74rem] font-[500] italic leading-4 dark:bg-white/20 dark:text-white/80">
         {dayName}
       </h1>
-      <div className="image-div flex h-full items-center py-[1%]">
+      <div className="image-div mt-1 flex h-full items-center">
         <img
-          className="size-[5rem] rounded-xl"
-          src={`/${description}.png`}
+          className="size-[4.8rem] rounded-xl"
+          src={`/${imageName}.png`}
           alt=""
         />
       </div>
       <div className="flex h-full w-[25%] flex-col items-center justify-evenly text-black/70 dark:text-inherit">
         <h1 className="text-[.79rem] font-[700]">{currentData.city}</h1>
         <h2 className="w-full text-center text-[.95rem] font-semibold capitalize italic leading-3 text-black dark:text-inherit md:text-sm">
-          {description2}
+          {description}
         </h2>
       </div>
       <div className="mt-2.5 flex h-full flex-col items-center justify-center">

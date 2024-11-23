@@ -1,38 +1,30 @@
 import React, { memo } from "react";
+import { IoMdMoon } from "react-icons/io";
 import { LiaLocationArrowSolid } from "react-icons/lia";
 import { useApiData } from "../../Context/ApiContext";
-import { useTime } from "../../Context/TimeContext";
 import CardSkeleton from "../../Skeletons/CardSkeleton";
+import { getImageName } from "../../utils/getImageName";
+import { epochDayConverter } from "../../utils/TimeProvider";
 
 const CurrentWeatherCard = () => {
-  const { epochDayConverter } = useTime();
   const { currentData, loading, timeZone } = useApiData();
-  let {
-    temp,
-    minTemp,
-    maxTemp,
-    feelsLike,
-    windDirection,
-    description,
-    description2,
-    epoc,
-  } = currentData;
+  let { temp, feelsLike, windDirection, description, epoc, isDayOrNight } =
+    currentData;
 
   if (loading == true) {
     return <CardSkeleton />;
   }
 
   const dayName = epochDayConverter(epoc, timeZone);
+  const imageName = getImageName(description, isDayOrNight);
 
-  if (
-    description2 === "light rain" ||
-    description2 === "heavy intensity rain" ||
-    description2 === "moderate rain"
-  ) {
-    description = description2;
-  }
   return (
     <div className="relative flex h-[12.9em] w-[94%] flex-col items-center rounded-[1.7em] bg-gradient-to-t from-blue-700 to-blue-400 text-white/95 shadow-md shadow-black/90 dark:from-[#161616] dark:to-[#474747]">
+      {isDayOrNight === "n" && (
+        <h1 className="absolute right-14 top-2 flex items-center gap-1 text-sm font-[600] italic text-white">
+          Night <IoMdMoon />
+        </h1>
+      )}
       <svg
         className="animated-wave absolute bottom-0 rotate-[180deg] rounded-t-3xl fill-sky-100 dark:fill-gray-400"
         xmlns="http://www.w3.org/2000/svg"
@@ -62,10 +54,10 @@ const CurrentWeatherCard = () => {
 
       <img
         className="absolute left-[1%] top-[-28%] h-[12em] w-[12em] rounded-xl"
-        src={`${description}.png`}
+        src={`${imageName}.png`}
         alt=""
       />
-      <div className="absolute right-[7%] top-[14%] flex flex-col items-center justify-center font-oswald text-[3.31em]">
+      <div className="absolute right-[6%] top-[14%] flex flex-col items-center justify-center font-oswald text-[3.31em]">
         <h1 className="bg-gradient-to-b from-white via-white to-transparent bg-clip-text font-extrabold leading-tight text-transparent">
           {temp}°C
         </h1>
@@ -84,8 +76,8 @@ const CurrentWeatherCard = () => {
         </div>
       </div>
       {/* Description & Day */}
-      <div className="absolute bottom-[35%] left-[7%] flex h-3 w-[50%] flex-col gap-2 text-[1.3em] font-[600] capitalize italic leading-5 md:text-sm">
-        <h1 className="h flex flex-wrap">{description2}</h1>
+      <div className="absolute bottom-[35%] left-[6%] flex h-3 w-[50%] flex-col gap-2 text-[1.3em] font-[600] capitalize italic leading-5 md:text-sm">
+        <h1 className="h flex flex-wrap">{description}</h1>
         <h2 className="text-[.7em] leading-3">{dayName}</h2>
       </div>
     </div>

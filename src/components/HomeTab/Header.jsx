@@ -7,7 +7,7 @@ import { useApiData } from "../../Context/ApiContext";
 import { useSearchModal } from "../../Context/SearchModalContext";
 import { useSidebar } from "../../Context/SidebarContext";
 import { useTheme } from "../../Context/ThemeContext";
-function Header() {
+const Header = () => {
   const { currentData, loading } = useApiData();
   const { openSidebar } = useSidebar();
   const { toggleTheme, currentTheme } = useTheme();
@@ -45,6 +45,6 @@ function Header() {
       </button>
     </div>
   );
-}
+};
 
 export default memo(Header);

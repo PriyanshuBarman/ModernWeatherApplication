@@ -14,8 +14,8 @@ import React, { memo } from "react";
 import { Line } from "react-chartjs-2";
 import { useApiData } from "../../Context/ApiContext";
 import { useTheme } from "../../Context/ThemeContext";
-import { useTime } from "../../Context/TimeContext";
 import ThreeHourlyChartSkeleton from "../../Skeletons/ThreeHourlyChartSkeleton";
+import { epochTimeConverter } from "../../utils/TimeProvider";
 
 ChartJS.register(
   CategoryScale,
@@ -31,7 +31,6 @@ ChartJS.register(
 
 const ThreeHourlyChart = () => {
   const { threeHourlyData, timeZone, loading } = useApiData();
-  const { epochTimeConverter } = useTime();
   const { currentTheme } = useTheme();
   const color = currentTheme === "dark" ? "#EBEBEB" : "#2d2c2c";
 

@@ -1,14 +1,13 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import HomeTab from "./components/HomeTab/HomeTab";
 import Layout from "./components/Layout";
 import { ApiProvider } from "./Context/ApiContext";
 import { SearchModalProvider } from "./Context/SearchModalContext";
 import { SidebarProvider } from "./Context/SidebarContext";
 import { ThemeProvider } from "./Context/ThemeContext";
-import { TimeProvider } from "./Context/TimeContext";
 import ForecastTabSkeleton from "./Skeletons/ForecastTabSkeleton";
 import PreviewSkeleton from "./Skeletons/PreviewSkeleton";
-import HomeTab from "./components/HomeTab/HomeTab";
 const ForecastTab = lazy(() => import("./components/ForecastTab/ForecastTab"));
 const Preview = lazy(() => import("./components/Preview"));
 
@@ -43,17 +42,15 @@ function App() {
   ]);
 
   return (
-    <SearchModalProvider>
-      <ApiProvider>
-        <ThemeProvider>
-          <SidebarProvider>
-            <TimeProvider>
-              <RouterProvider router={Routes} />
-            </TimeProvider>
-          </SidebarProvider>
-        </ThemeProvider>
-      </ApiProvider>
-    </SearchModalProvider>
+    <ApiProvider>
+      <ThemeProvider>
+        <SidebarProvider>
+          <SearchModalProvider>
+            <RouterProvider router={Routes} />
+          </SearchModalProvider>
+        </SidebarProvider>
+      </ThemeProvider>
+    </ApiProvider>
   );
 }
 

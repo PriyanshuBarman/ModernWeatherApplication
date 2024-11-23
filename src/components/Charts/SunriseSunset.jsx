@@ -2,10 +2,9 @@ import React, { useMemo } from "react";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { PiSunFill } from "react-icons/pi";
 import { useApiData } from "../../Context/ApiContext";
-import { useTime } from "../../Context/TimeContext";
+import { epochTimeConverter } from "../../utils/TimeProvider";
 
 const SunriseSunset = () => {
-  const { epochTimeConverter } = useTime();
   const { currentData, timeZone } = useApiData();
   const sunrise =
     epochTimeConverter(currentData?.sunRise, timeZone) || "06:00 AM";
@@ -133,7 +132,7 @@ const SunriseSunset = () => {
             <h1 className="text-[1em] font-[500] italic">Day</h1>
           </div>
           <div className="absolute top-3 flex size-10 flex-col items-center justify-center gap-2">
-            <BsFillMoonStarsFill className="size-[30%] dark:text-gray-400 text-gray-600" />
+            <BsFillMoonStarsFill className="size-[30%] text-gray-600 dark:text-gray-400" />
             <h2 className="text-[1em] font-[500] italic">Night</h2>
           </div>
         </div>

@@ -1,21 +1,18 @@
 import React, { memo } from "react";
 import { LiaLocationArrowSolid } from "react-icons/lia";
+import { MdLocationOn } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useApiData } from "../../Context/ApiContext";
-import { useTime } from "../../Context/TimeContext";
 import CardSkeleton from "../../Skeletons/CardSkeleton";
+import { getImageName } from "../../utils/getImageName";
+import { epochDayConverter } from "../../utils/TimeProvider";
 
 const DailyForecastCard = ({ index, city }) => {
   const { loading, dailyData, timeZone } = useApiData();
-  const { epochDayConverter } = useTime();
 
   if (loading) return <CardSkeleton />;
   if (!dailyData || !dailyData[index]) {
-    return (
-      <p className="flex h-full w-full items-center justify-center font-normal italic text-red-600">
-        No Forecast Data Available!
-      </p>
-    );
+    return;
   }
 
   // Extract values from `dailyData` to simplify JSX
@@ -23,18 +20,12 @@ const DailyForecastCard = ({ index, city }) => {
   const temp = Math.round(forecast.main.temp);
   const feelsLike = Math.round(forecast.main.feels_like);
   const windDirection = forecast.wind.deg + 180;
-  let description = forecast.weather[0].main;
-  const description2 = forecast.weather[0].description;
+  const description = forecast.weather[0].description;
   const epoc = forecast.dt;
-  if (
-    description2 === "light rain" ||
-    description2 === "heavy intensity rain" ||
-    description2 === "moderate rain"
-  ) {
-    description = description2;
-  }
+  const isDayOrNight = forecast.sys.pod;
 
   const dayName = epochDayConverter(epoc, timeZone);
+  const imageName = getImageName(description, isDayOrNight);
 
   const navigate = useNavigate();
   const handleClick = () => navigate(`/Forecast/${index}`);
@@ -72,7 +63,7 @@ const DailyForecastCard = ({ index, city }) => {
         </svg>
         <img
           className="absolute left-[1%] top-[-28%] h-[12em] w-[12em] rounded-xl capitalize"
-          src={`/${description}.png`}
+          src={`/${imageName}.png`}
           alt=""
         />
 
@@ -96,13 +87,18 @@ const DailyForecastCard = ({ index, city }) => {
 
         {/* ------- Description & Day */}
         <div className="absolute bottom-[35%] left-[7%] flex h-3 w-[50%] flex-col gap-2 text-[1.3em] font-[600] capitalize italic leading-5 md:text-sm">
-          <h1 className="h flex flex-wrap">{description2}</h1>
+          <h1 className="h flex flex-wrap">{description}</h1>
           <h2 className="text-[.7em] leading-3">{dayName}</h2>
         </div>
-
-        <h1 className="absolute right-14 top-2 text-sm font-[500] italic text-white">
-          {city ? city : "Forecast"}
-        </h1>
+        {city ? (
+          <h1 className="absolute right-12 top-2 flex items-center text-sm font-[600] italic text-white">
+            <MdLocationOn className="mb-1 size-[1.03rem]" /> {city}
+          </h1>
+        ) : (
+          <h1 className="absolute right-14 top-2 text-sm font-[500] italic text-white">
+            Forecast
+          </h1>
+        )}
       </div>
     </>
   );

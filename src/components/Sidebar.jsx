@@ -47,9 +47,9 @@ const Sidebar = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `mr-4 flex cursor-pointer items-center rounded-r-full p-4 ${
+                  `mr-4 flex cursor-pointer items-center rounded-r-full p-4 text-white ${
                     isActive
-                      ? "bg-blue-500 text-white dark:bg-blue-400"
+                      ? "bg-blue-500 dark:bg-blue-500"
                       : "hover:bg-gray-200 dark:hover:bg-gray-700"
                   }`
                 }

@@ -14,8 +14,8 @@ import React, { memo, useEffect, useRef, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { useApiData } from "../../Context/ApiContext";
 import { useTheme } from "../../Context/ThemeContext";
-import { useTime } from "../../Context/TimeContext";
 import DailyChartSkeleton from "../../Skeletons/DailyChartSkeleton";
+import { epochDayConverter } from "../../utils/TimeProvider";
 
 // Register chart.js components and plugins
 ChartJS.register(
@@ -31,7 +31,6 @@ ChartJS.register(
 );
 
 const DailyChart = () => {
-  const { epochDayConverter } = useTime();
   const { dailyData, timeZone, loading } = useApiData(); // Access the context
   const { currentTheme } = useTheme();
   const [verticalLineIndex, setVerticalLineIndex] = useState(2); // Default to 'Week 3'
@@ -222,7 +221,7 @@ const DailyChart = () => {
   return (
     <div className="z-10 w-[95%] space-y-1 rounded-2xl bg-white/90 to-transparent px-2 pb-[1%] pt-3 shadow-md shadow-black/80 dark:bg-[#1f1f1f]">
       <h1 className="flex w-full items-center justify-between px-2 text-sm font-semibold italic dark:text-white/70">
-        Next 5 days 
+        Next 5 days
         <span className="rounded-full bg-black/10 px-2 text-[.8em] italic text-black/85 dark:bg-white/30">
           Temperature
         </span>

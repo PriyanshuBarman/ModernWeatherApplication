@@ -3,15 +3,18 @@ import { FaAngleRight } from "react-icons/fa6";
 import { FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useApiData } from "../../Context/ApiContext";
-import { useTime } from "../../Context/TimeContext";
 import ThreeHourlyForecastSkeleton from "../../Skeletons/ThreeHourlyForecastSkeleton";
+import { getImageName } from "../../utils/getImageName";
+import {
+  epochDayConverter,
+  epochTimeConverter,
+} from "../../utils/TimeProvider";
 
 const ThreeHourlyForecast = () => {
   const { threeHourlyData, loading } = useApiData();
   if (loading) {
     return <ThreeHourlyForecastSkeleton />;
   }
-
   return (
     <div className="h-50 mt- w-full rounded-md bg-inherit">
       <div className="mb- ml-[2%] flex w-[95%] flex-wrap items-center justify-between gap-4 py-1.5 pl-5 pr-2 text-xs font-bold italic text-black/80 dark:text-white/90">
@@ -35,8 +38,8 @@ const ThreeHourlyForecast = () => {
                 item={item}
                 epoc={item.dt}
                 temp={Math.round(item.main.temp)}
-                description={item.weather[0].main}
-                description2={item.weather[0].description}
+                description={item.weather[0].description}
+                isDayOrNight={item.sys.pod}
               />
             </SwiperSlide>
           ))}
@@ -45,22 +48,14 @@ const ThreeHourlyForecast = () => {
   );
 };
 
-const Cards = memo(({ epoc, temp, description, description2 }) => {
-  const { epochTimeConverter, epochDayConverter } = useTime();
+const Cards = memo(({ epoc, temp, description, isDayOrNight }) => {
   const { timeZone, today } = useApiData();
 
   const ForecastTime = epochTimeConverter(epoc, timeZone);
-
   const day = epochDayConverter(epoc, timeZone);
   const ForecastDay = today === day ? "" : day;
 
-  if (
-    description2 === "light rain" ||
-    description2 === "heavy intensity rain" ||
-    description2 === "moderate rain"
-  ) {
-    description = description2;
-  }
+  const imageName = getImageName(description, isDayOrNight);
 
   return (
     <div className="container flex w-full flex-col items-center justify-center">
@@ -76,11 +71,11 @@ const Cards = memo(({ epoc, temp, description, description2 }) => {
 
         <div className="flex size-full flex-col items-center justify-center pb-1 pt-5">
           <img
-            className="bg-gray bg-red-00 h-[50%] w-[65%]"
-            src={`${description}.png`}
+            className="bg-gray bg-red-00 h-[50%] w-[69%]"
+            src={`${imageName}.png`}
             alt=""
           />
-          <h1 className="dark:text-ts pt-1 text-[.85em] font-[600]">
+          <h1 className="dark:text-ts pt-1 text-[.85em] font-[600] leading-3">
             {temp}°c
           </h1>
         </div>

@@ -33,7 +33,7 @@ const ForecastTab = () => {
         >
           <MdArrowCircleLeft className="h-full w-full" />
         </button>
-        <h1 className="text-[1.18em] font-semibold italic">
+        <h1 className="text-[1rem] font-semibold italic">
           Forecast
           <span className="text-sm">
             ({activeSlideIndex === 0 ? " Daily " : " 3 Hourly "})
@@ -48,7 +48,7 @@ const ForecastTab = () => {
       >
         <SwiperSlide className="slide-1 flex h-full flex-col items-center justify-center pt-12">
           <DailyChart />
-          <div className="mt-6 flex w-full flex-col items-center justify-center gap-y-4 rounded-t-3xl bg-[#f6f5f5] dark:border-white/10 dark:bg-black/10 dark:text-inherit">
+          <div className="mt-6 flex w-full flex-col items-center justify-center gap-y-4 rounded-t-3xl bg-[#f6f5f5] dark:border-white/10 dark:bg-black/15 dark:text-inherit">
             <h1 className="ml-[4.4rem] mt-4 w-full text-[.9rem] font-semibold italic">
               Next 5 Days
             </h1>
@@ -57,11 +57,11 @@ const ForecastTab = () => {
                 <DailyCards
                   key={index}
                   index={index}
+                  epoc={item.dt}
                   temp={Math.round(item.main.temp)}
                   feelsLike={Math.round(item.main.feels_like)}
-                  description={item.weather[0].main}
-                  description2={item.weather[0].description}
-                  epoc={item.dt}
+                  description={item.weather[0].description}
+                  isDayOrNight={item.sys.pod}
                 />
               ))}
             <div className="mb-20 mt-3 flex w-full flex-col items-center justify-center gap-2">
@@ -76,7 +76,7 @@ const ForecastTab = () => {
 
         <SwiperSlide className="slide-2 flex w-full flex-col items-center justify-center pt-12">
           <ThreeHourlyChart />
-          <div className="z-10 mt-6 flex w-full flex-col items-center justify-center gap-y-4 rounded-t-3xl bg-[#f6f5f5] dark:border-white/10 dark:bg-black/10 dark:text-inherit">
+          <div className="z-10 mt-6 flex w-full flex-col items-center justify-center gap-y-4 rounded-t-3xl bg-[#f6f5f5] dark:border-white/10 dark:bg-black/15 dark:text-inherit">
             <h1 className="ml-[4.4rem] mt-4 w-full text-[.88rem] font-semibold italic">
               Next 5 Days (3 hourly)
             </h1>
@@ -88,8 +88,8 @@ const ForecastTab = () => {
                   temp={Math.round(item.main.temp)}
                   feelsLike={Math.round(item.main.feels_like)}
                   windDirection={item.wind.deg + 180}
-                  description={item.weather[0].main}
-                  description2={item.weather[0].description}
+                  description={item.weather[0].description}
+                  isDayOrNight={item.sys.pod}
                   epoc={item?.dt}
                 />
               ))}

@@ -18,19 +18,19 @@ export default function CardSkeleton() {
         <path d="M1000 0H0v52C62.5 28 125 4 250 4c250 0 250 96 500 96 125 0 187.5-24 250-48V0Z"></path>
       </svg>
 
-      <div className="absolute right-[8%] top-[20%] flex flex-col items-center justify-center gap-1 font-oswald text-[3.3em]">
-        <h1 className="mr- mb-2 h-14 w-28 animate-pulse rounded-lg bg-white/75"></h1>
+      <div className="absolute right-[7%] top-[19%] flex flex-col items-center justify-center gap-1">
+        <span className="mb-2 h-14 w-24 animate-pulse rounded-lg bg-white/75 dark:bg-white/30"></span>
 
-        <span className="flex flex-col items-center font-oxanium text-[.32em] font-[600] md:text-sm">
-          <h2 className="mb-1 h-4 w-32 animate-pulse rounded-lg bg-white/75"></h2>
-          <h2 className="mt-[7%] h-5 w-20 animate-pulse rounded-lg bg-white/75"></h2>
-        </span>
+        <div className="flex flex-col items-center">
+          <span className="mb-1 h-4 w-[7.5rem] animate-pulse rounded-md bg-white/75 dark:bg-white/30"></span>
+          <span className="mt-3 h-3 w-24 animate-pulse rounded-lg bg-white/75 dark:bg-white/30"></span>
+        </div>
       </div>
 
-      <span className="absolute bottom-[20%] left-[8%] flex w-[35%] flex-col gap-2 text-[1.4em] font-[600] capitalize italic leading-5 md:text-sm">
-        <h1 className="h-6 w-full animate-pulse rounded-lg bg-white/75"></h1>
-        <h2 className="h-4 w-24 animate-pulse rounded-lg bg-white/75"></h2>
-      </span>
+      <div className="absolute bottom-[23%] left-[8%] flex w-[39%] flex-col gap-2">
+        <span className="h-5 w-full animate-pulse rounded-md bg-white/75 dark:bg-white/30"></span>
+        <span className="h-2.5 w-20 animate-pulse rounded-md bg-white/75 dark:bg-white/30"></span>
+      </div>
     </div>
   );
 }

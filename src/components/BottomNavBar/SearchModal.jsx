@@ -82,28 +82,28 @@ const SearchModal = () => {
         }`}
       ></div>
       <div
-        className={`fixed bottom-0 z-50 flex h-[75%] w-full flex-col items-center rounded-t-3xl border-t border-black/50 bg-[#f9f9f9] pt-2.5 font-oxanium text-white shadow-lg transition-all duration-75 ease-in-out dark:border-t dark:border-white/50 dark:bg-[#1e1e1e] md:w-[375px] ${
+        className={`fixed bottom-0 z-50 flex h-[75%] w-full flex-col items-center rounded-t-3xl border-t border-black/40 bg-[#f9f9f9] pt-2.5 font-oxanium text-white transition-all duration-100 ease-linear dark:border-t dark:border-white/50 dark:bg-[#1e1e1e] md:w-[375px] ${
           isModalOpen ? "translate-y-0" : "translate-y-[100%]"
         }`}
       >
-        <label
+        <div
           onClick={closeModal}
-          className="h-1 w-[20%] rounded-full bg-black/30 dark:bg-white/35"
-        ></label>
+          className="absolute h-[.2rem] w-[20%] rounded-full bg-black/25 dark:bg-white/35"
+        ></div>
         <button
           onClick={closeModal}
-          className="absolute bottom-4 flex size-10 items-center justify-center rounded-full bg-blue-500 text-white dark:bg-white/35 dark:text-black dark:hover:bg-gray-700"
+          className="absolute bottom-4 z-10 flex size-10 items-center justify-center rounded-full bg-blue-500 text-white dark:bg-white/35 dark:text-black dark:hover:bg-gray-700"
         >
           <IoClose className="size-[70%]" />
         </button>
 
         <form
-          className="mt-7 flex min-h-12 w-[80%] items-center justify-center rounded-full bg-white px-5 italic shadow-[inset_-0px_-0px_1px_1px] shadow-black/50 dark:bg-black/5 dark:shadow-white/50"
+          className="mt-7 flex min-h-12 w-[80%] items-center justify-center rounded-full bg-white px-5 text-sm italic shadow-[inset_-0px_-0px_1px_1px] shadow-black/50 dark:bg-black/5 dark:shadow-white/50"
           onSubmit={(e) => handleSubmit(e, input)}
         >
           <input
             type="text"
-            className="h-full w-full bg-transparent text-black placeholder-gray-600 outline-none dark:text-white dark:placeholder-white/85"
+            className="h-full w-full bg-transparent text-black placeholder-black/80 outline-none dark:text-white dark:placeholder-white/85"
             placeholder={error || "Search City Name"} // Display error in placeholder
             value={input}
             onChange={(e) => {
@@ -112,22 +112,22 @@ const SearchModal = () => {
             }}
             ref={inputRef}
           />
-          <button className="flex h-full w-[12%] items-center justify-center text-gray-700 dark:text-inherit">
+          <button className="flex h-full w-[12%] items-center justify-center text-gray-900 dark:text-white/80">
             <IoMdSearch className="h-7 w-7" />
           </button>
         </form>
 
-        <div className="w-full overflow-y-auto px-16 pb-28">
+        <div className="w-full overflow-y-auto px-16 pb-28 pt-1">
           {/* SEARCH HISTORY */}
           {searchHistory.length > 0 && (
-            <div className="mt-4">
-              <div className="mb-[7%] flex items-center justify-between">
-                <h1 className="text-sm font-semibold text-blue-500 dark:text-blue-400">
-                  Search History
+            <div className="relative w-full">
+              <div className="sticky top-0 mb-3.5 flex w-full items-center justify-between bg-[#f9f9f9] pb-0.5 pt-3 dark:bg-[#1e1e1e]">
+                <h1 className="text-sm font-semibold text-black/80 dark:text-white/80">
+                  Recent searches
                 </h1>
                 <button
                   onClick={clearAllHistory}
-                  className="rounded-full bg-red-400 px-3 py-0.5 text-xs italic text-white hover:scale-105"
+                  className="rounded-full bg-red-400 px-3 py-0.5 text-xs italic text-white hover:bg-red-500"
                 >
                   Clear All
                 </button>
@@ -136,7 +136,7 @@ const SearchModal = () => {
                 {searchHistory.map((item, i) => (
                   <li
                     key={i}
-                    className="flex items-center justify-between gap-0.5 overflow-hidden rounded-full bg-black/15 py-0.5 pl-3 hover:bg-black/20 dark:bg-white/30"
+                    className="flex items-center justify-between gap-0.5 overflow-hidden rounded-full bg-black/15 py-0.5 pl-3 dark:bg-white/10"
                   >
                     <span onClick={(e) => handleSubmit(e, item)}>{item}</span>
                     <button
@@ -152,7 +152,7 @@ const SearchModal = () => {
           )}
           {/* SEARCH SUGGESTIONS */}
           <div className="mt-[10%]">
-            <h1 className="mb-2 text-sm font-semibold italic text-gray-600 underline dark:text-gray-400">
+            <h1 className="mb-2 text-sm font-semibold italic text-black/80 underline dark:text-white/80">
               Famous Cities
             </h1>
             <ul className="flex w-full cursor-pointer flex-wrap items-center justify-between gap-3 text-center text-sm italic text-gray-600 dark:text-gray-400">

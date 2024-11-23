@@ -11,7 +11,7 @@ export const ApiProvider = ({ children }) => {
   const [err, setErr] = useState();
 
   useEffect(() => {
-    fetchAllData("New York");
+    fetchAllData("Mumbai");
   }, []);
 
   const fetchAllData = async (inputName) => {
@@ -78,6 +78,10 @@ export const ApiProvider = ({ children }) => {
 
   const currentData = useMemo(() => {
     if (weatherData) {
+      const epoc = weatherData.dt; // Current timestamp
+      const sunrise = weatherData.sys.sunrise; // Sunrise time
+      const sunset = weatherData.sys.sunset; // Sunset time
+
       return {
         temp: Math.round(weatherData.main.temp),
         maxTemp: Math.ceil(weatherData.main.temp_max),
@@ -85,19 +89,19 @@ export const ApiProvider = ({ children }) => {
         feelsLike: Math.round(weatherData.main.feels_like),
         humidity: weatherData.main.humidity,
         clouds: weatherData.clouds.all,
-        visibility: weatherData.visibility / 1000,
+        visibility: Math.round(weatherData.visibility / 1000),
         windSpeed: Math.round(weatherData.wind.speed * 3.6),
         windDirection: weatherData.wind.deg + 180,
         pressure: weatherData.main.pressure,
-        description: weatherData.weather[0].main,
-        description2: weatherData.weather[0].description,
-        sunRise: weatherData.sys.sunrise,
-        sunSet: weatherData.sys.sunset,
-        epoc: weatherData.dt,
+        description: weatherData.weather[0].description,
+        sunRise: sunrise,
+        sunSet: sunset,
+        epoc: epoc,
         lat: weatherData.coord.lat,
         lon: weatherData.coord.lon,
         city: weatherData.name,
         countryCode: weatherData.sys.country,
+        isDayOrNight: epoc > sunrise && epoc < sunset ? "d" : "n",
       };
     }
     return {};

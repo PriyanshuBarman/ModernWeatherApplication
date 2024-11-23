@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { FaAngleDoubleDown, FaCloudversify, FaEye } from "react-icons/fa";
 import { FaAnglesDown, FaWind } from "react-icons/fa6";
 import { MdArrowCircleLeft } from "react-icons/md";
@@ -9,23 +9,23 @@ import { useApiData } from "../Context/ApiContext";
 import Footer from "./Footer";
 import SquareDiv from "./SquareDiv";
 import DailyForecastCard from "./HomeTab/DailyForecastCard";
-export default function Preview() {
+const Preview = () => {
   let { dailyData, currentData } = useApiData();
   let { index } = useParams();
-  const forecast = dailyData[index];
-  const humidity = forecast.main.humidity;
-  const clouds = forecast.clouds.all;
-  const windSpeed = Math.round(forecast.wind.speed * 3.6);
-  const feelsLike = Math.round(forecast.main.feels_like);
-  const visibility = Math.round(forecast.visibility / 1000);
-  const pressure = forecast.main.pressure;
+  const forecast = dailyData ? dailyData[index] : null;
+  const humidity = forecast?.main.humidity;
+  const clouds = forecast?.clouds.all;
+  const windSpeed = Math.round(forecast?.wind.speed * 3.6);
+  const feelsLike = Math.round(forecast?.main.feels_like);
+  const visibility = Math.round(forecast?.visibility / 1000);
+  const pressure = forecast?.main.pressure;
 
   const navigate = useNavigate();
   const handleBackClick = () => navigate(-1);
 
   return (
     <div className="container flex w-full flex-wrap items-center justify-center overflow-hidden bg-[#f2f2f2] pt-12 font-oxanium dark:bg-[#272727]">
-      <nav className="fixed top-0 z-40 flex h-9 w-full items-center justify-center bg-white dark:bg-[#414141] dark:text-white md:w-[375px]">
+      <nav className="fixed top-0 z-20 flex h-9 w-full items-center justify-center bg-white dark:bg-[#414141] dark:text-white md:w-[375px]">
         <button
           onClick={handleBackClick}
           className="absolute left-[3%] h-[75%] w-[9%] rounded-md text-black/70 active:shadow-none dark:text-white/70"
@@ -37,17 +37,17 @@ export default function Preview() {
         </h1>
       </nav>
 
-      <div className="mt-5 flex w-full justify-center">
+      <div className="mt-7 flex w-full justify-center">
         <DailyForecastCard index={index} city={currentData.city} />
       </div>
 
       <section className="mt-9 flex w-full flex-wrap items-center justify-evenly gap-2">
         <div className="relative mb-4 h-5 w-full">
-        <div className="relative flex h-5 w-full items-center justify-center">
-          <h1 className="flex w-[92%] items-center justify-center rounded-full bg-black/15 py-1.5 text-[.9rem] font-[500] italic leading-4 gap-3 text-black/80 dark:bg-white/10 dark:text-white/80">
-            Quick Weather preview <FaAnglesDown />
-          </h1>
-        </div>
+          <div className="relative flex h-5 w-full items-center justify-center">
+            <h1 className="flex w-[92%] items-center justify-center gap-3 rounded-full bg-black/15 py-1.5 text-[.9rem] font-[500] italic leading-4 text-black/80 dark:bg-white/10 dark:text-white/80">
+              Quick Weather preview <FaAnglesDown />
+            </h1>
+          </div>
         </div>
         <SquareDiv
           unit={feelsLike}
@@ -85,4 +85,6 @@ export default function Preview() {
       <Footer />
     </div>
   );
-}
+};
+
+export default memo(Preview);

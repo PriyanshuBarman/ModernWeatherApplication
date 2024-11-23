@@ -1,48 +1,45 @@
 import React, { memo, useMemo } from "react";
-import { useApiData } from "../../Context/ApiContext";
-import { useTime } from "../../Context/TimeContext";
-import ThreeHourlyCardsSkeleton from "../../Skeletons/ThreeHourlyCardsSkeleton";
 import { LiaLocationArrowSolid } from "react-icons/lia";
+import { useApiData } from "../../Context/ApiContext";
+import ThreeHourlyCardsSkeleton from "../../Skeletons/ThreeHourlyCardsSkeleton";
+import { getImageName } from "../../utils/getImageName";
+import {
+  epochDayConverter,
+  epochTimeConverter,
+} from "../../utils/TimeProvider";
 
 const ThreeHourlyCards = ({
   temp,
+  epoc,
   feelsLike,
   windDirection,
   description,
-  description2,
-  epoc,
+  isDayOrNight,
 }) => {
   const { currentData, timeZone, loading } = useApiData();
-  const { epochDayConverter, epochTimeConverter } = useTime();
   const dayName = useMemo(() => epochDayConverter(epoc, timeZone), [timeZone]);
   const time = useMemo(() => epochTimeConverter(epoc, timeZone), [timeZone]);
-  if (
-    description2 === "light rain" ||
-    description2 === "heavy intensity rain" ||
-    description2 === "moderate rain"
-  ) {
-    description = description2;
-  }
+  const imageName = getImageName(description, isDayOrNight);
   if (loading) {
     return <ThreeHourlyCardsSkeleton />;
   }
-  
+
   return (
     <div className="relative flex h-[6.1rem] w-[85%] cursor-pointer items-center justify-around overflow-hidden rounded-xl bg-white py-[2%] pl-[1%] pr-5 text-black shadow-[.7px_.7px_1px_.7px] shadow-black/50 dark:bg-[#1d1d1d] dark:text-white/80">
       <h1 className="absolute left-0 top-0 flex w-[45%] justify-evenly rounded-br-2xl bg-black/15 text-center text-[.67rem] font-[500] italic leading-4 dark:bg-white/20 dark:text-white/80">
         {dayName} / {time}
       </h1>
-      <div className="image-div flex h-full items-center">
+      <div className="image-div mt-1 flex h-full items-center">
         <img
-          className="size-[5rem] rounded-xl"
-          src={`/${description}.png`}
+          className="size-[4.8rem] rounded-xl"
+          src={`/${imageName}.png`}
           alt=""
         />
       </div>
       <div className="flex h-full w-[25%] flex-col items-center justify-evenly text-black/70 dark:text-inherit">
         <h1 className="text-[.79rem] font-[700]">{currentData.city}</h1>
         <h2 className="w-full text-center text-[.95rem] font-semibold capitalize italic leading-3 text-black dark:text-inherit md:text-sm">
-          {description2}
+          {description}
         </h2>
       </div>
       <div className="mt-2.5 flex h-full flex-col items-center justify-center">

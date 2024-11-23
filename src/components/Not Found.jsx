@@ -15,12 +15,8 @@ const NotFound = () => {
         </h1>
       ) : (
         <>
-          <div className="mt-5 flex h-[35%] w-full justify-center">
-            <img
-              src="/NotFoundLocation.png"
-              alt=""
-              className="mt-9 h-full bg-cover"
-            />
+          <div className="mt-5 flex h-[43%] w-full justify-center">
+            <img src="/notFound.webp" alt="" className="mt-9 h-full bg-cover" />
           </div>
 
           <div className="mt-12 flex w-full flex-col items-center justify-center gap-y-10">
@@ -29,7 +25,7 @@ const NotFound = () => {
             </h1>
             <button
               onClick={openModal}
-              className="h-9 w-36 rounded-full border-b-2 border-r-2 border-black/40 bg-blue-500 text-[.92rem] font-[500] text-white dark:bg-white/15 dark:text-white/80"
+              className="mt-10 h-9 w-32 rounded-full bg-blue-500 text-sm font-[500] text-white shadow-lg dark:bg-blue-600"
             >
               Search again
             </button>
