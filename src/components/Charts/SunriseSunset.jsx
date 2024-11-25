@@ -67,7 +67,7 @@ const SunriseSunset = () => {
   const dayLight = `${Math.floor(totalMinutes / 60)}h ${totalMinutes % 60}min`;
 
   return (
-    <div className="relative mt-2.5 flex w-[93%] flex-col items-center overflow-hidden rounded-2xl rounded-tl-xl border-r border-t border-black/5 bg-white/25 text-xs shadow-[1px_3px_4px_0px] shadow-black/50 active:shadow-[0px_-1px_2px_0px] dark:border-white/5 dark:bg-[#1f1f1f] dark:text-white/90 dark:shadow-black">
+    <div className="relative mt-2 flex w-[93%] flex-col items-center overflow-hidden rounded-2xl rounded-tl-xl border-r border-t border-black/5 bg-white/25 text-xs shadow-[1px_3px_4px_0px] shadow-black/50 active:shadow-[0px_-1px_2px_0px] dark:border-white/5 dark:bg-[#1f1f1f] dark:text-white/90 dark:shadow-black">
       <h1 className="absolute top-0 mt-1 flex items-center rounded-b-xl px-4 font-[500] leading-3">
         {currentTime}
       </h1>
@@ -75,7 +75,7 @@ const SunriseSunset = () => {
         Daylight: {dayLight}
       </h1>
 
-      <div className="relative mt-1 flex h-[10rem] w-full items-center justify-center">
+      <div className="relative mt-1 flex h-[10.25rem] w-full items-center justify-center">
         <svg viewBox="0 0 100 100" className="h-full w-full">
           <path
             d="M 10 50 A 40 40 0 0 1 90 50" // Left to right path (sunrise to sunset)

@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from "react";
 import { LiaLocationArrowSolid } from "react-icons/lia";
 import { useApiData } from "../../Context/ApiContext";
-import ThreeHourlyCardsSkeleton from "../../Skeletons/ThreeHourlyCardsSkeleton";
+import ThreeHourlyCardsSkeleton from "../Skeletons/ThreeHourlyCardsSkeleton";
 import { getImageName } from "../../utils/getImageName";
 import {
   epochDayConverter,

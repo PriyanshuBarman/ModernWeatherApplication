@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useApiData } from "../Context/ApiContext";
-import SquareDivSkeleton from "../Skeletons/SquareDivSkeleton";
+import SquareDivSkeleton from "./Skeletons/SquareDivSkeleton";
 
 const SquareDiv = ({ icon, title, unitname, unit }) => {
   const { loading } = useApiData();

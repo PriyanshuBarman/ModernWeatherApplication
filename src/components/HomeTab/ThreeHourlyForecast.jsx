@@ -3,12 +3,12 @@ import { FaAngleRight } from "react-icons/fa6";
 import { FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useApiData } from "../../Context/ApiContext";
-import ThreeHourlyForecastSkeleton from "../../Skeletons/ThreeHourlyForecastSkeleton";
 import { getImageName } from "../../utils/getImageName";
 import {
   epochDayConverter,
   epochTimeConverter,
 } from "../../utils/TimeProvider";
+import ThreeHourlyForecastSkeleton from "../Skeletons/ThreeHourlyForecastSkeleton";
 
 const ThreeHourlyForecast = () => {
   const { threeHourlyData, loading } = useApiData();

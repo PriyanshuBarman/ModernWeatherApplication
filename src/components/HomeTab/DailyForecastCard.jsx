@@ -3,7 +3,7 @@ import { LiaLocationArrowSolid } from "react-icons/lia";
 import { MdLocationOn } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useApiData } from "../../Context/ApiContext";
-import CardSkeleton from "../../Skeletons/CardSkeleton";
+import CardSkeleton from "../Skeletons/CardSkeleton";
 import { getImageName } from "../../utils/getImageName";
 import { epochDayConverter } from "../../utils/TimeProvider";
 
@@ -71,7 +71,7 @@ const DailyForecastCard = ({ index, city }) => {
           <h1 className="bg-gradient-to-b from-white via-white to-transparent bg-clip-text font-extrabold leading-tight text-transparent">
             {temp}°C
           </h1>
-          <h2 className="flex flex-col items-center font-oxanium text-[.32em] font-[600] md:text-sm">
+          <h2 className="ml-3 flex w-full flex-col items-start font-oxanium text-base font-[600] md:text-sm">
             Feels Like {feelsLike}°c
           </h2>
           <div className="flex items-center justify-center gap-1 font-oxanium">

@@ -2,18 +2,16 @@ import React, { memo } from "react";
 import { IoMdMoon } from "react-icons/io";
 import { LiaLocationArrowSolid } from "react-icons/lia";
 import { useApiData } from "../../Context/ApiContext";
-import CardSkeleton from "../../Skeletons/CardSkeleton";
 import { getImageName } from "../../utils/getImageName";
 import { epochDayConverter } from "../../utils/TimeProvider";
+import CardSkeleton from "../Skeletons/CardSkeleton";
 
 const CurrentWeatherCard = () => {
   const { currentData, loading, timeZone } = useApiData();
+  if (loading) return <CardSkeleton />;
+
   let { temp, feelsLike, windDirection, description, epoc, isDayOrNight } =
     currentData;
-
-  if (loading == true) {
-    return <CardSkeleton />;
-  }
 
   const dayName = epochDayConverter(epoc, timeZone);
   const imageName = getImageName(description, isDayOrNight);
@@ -62,7 +60,7 @@ const CurrentWeatherCard = () => {
           {temp}°C
         </h1>
 
-        <h2 className="flex flex-col items-center font-oxanium text-[.32em] font-[600] md:text-sm">
+        <h2 className="ml-3 flex w-full flex-col items-start font-oxanium text-base font-[600] md:text-sm">
           Feels like {feelsLike}°c
         </h2>
         <div className="flex items-center justify-center gap-1 font-oxanium">

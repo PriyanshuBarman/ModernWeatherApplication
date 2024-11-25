@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <div className="fixed top-0 z-40 flex h-10 w-full items-center justify-center gap-1 bg-gradient-to-b from-[#f5f5f5] via-[#f5f5f5] to-transparent pb-1 pt-2.5 font-oxanium text-[1.2rem] text-black/90 shadow-[inset_1px_-.4px_2px_0px_ttt] dark:from-[#252525] dark:via-[#242424] dark:to-[#242424] dark:text-white md:w-[375px]">
       {loading ? (
-        <h1 className="h-5 w-36 animate-pulse rounded-md bg-black/15 dark:bg-white/15"></h1>
+        <h1 className="h-5 w-36 animate-pulse rounded-md bg-black/15 dark:bg-white/20"></h1>
       ) : (
         <h1 onClick={openModal} className="flex gap-2 font-bold">
           <MdLocationOn className="size-[1.35rem]" />

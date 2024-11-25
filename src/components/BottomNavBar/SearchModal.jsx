@@ -24,20 +24,18 @@ const SearchModal = () => {
     localStorage.setItem("searchHistory", JSON.stringify(newHistory));
   };
 
-  const handleSubmit = async (e, city) => {
+  const handleSubmit = (e, city) => {
     e.preventDefault();
     const trimmedCity = city.trim();
-
     // Validation check
     if (!trimmedCity || trimmedCity.length < 3) {
       setError("Please enter valid City name");
       setInput(""); // Clear the input if invalid
       return;
     }
-
     // If valid, proceed with search
     setError(""); // Clear any previous error
-    search(e, city);
+    search(trimmedCity);
     inputRef.current.blur();
     setInput("");
     closeModal();
@@ -48,28 +46,16 @@ const SearchModal = () => {
     }
   };
 
-  const clearAllHistory = () => {
-    saveSearchHistory([]);
-  };
+  const clearAllHistory = () => saveSearchHistory([]);
 
-  const clearHistoryItem = (itemToRemove) => {
-    const updatedHistory = searchHistory.filter(
-      (item) => item !== itemToRemove,
-    );
+  const clearHistoryItem = (item) => {
+    const updatedHistory = searchHistory.filter((i) => i !== item);
     saveSearchHistory(updatedHistory);
   };
 
   const SearchSuggestions = [
-    "New York",
-    "London",
-    "Paris",
-    "Tokyo",
-    "Moscow",
-    "Berlin",
-    "Mumbai",
-    "Dubai",
-    "Sydney",
-    "Shanghai",
+    "New York", "London", "Paris", "Tokyo", "Moscow", "Berlin",
+    "Mumbai", "Dubai", "Sydney", "Shanghai"
   ];
 
   return (
@@ -117,7 +103,7 @@ const SearchModal = () => {
           </button>
         </form>
 
-        <div className="w-full overflow-y-auto px-16 pb-28 pt-1">
+        <div className="w-full overflow-y-auto px-16 pb-28">
           {/* SEARCH HISTORY */}
           {searchHistory.length > 0 && (
             <div className="relative w-full">

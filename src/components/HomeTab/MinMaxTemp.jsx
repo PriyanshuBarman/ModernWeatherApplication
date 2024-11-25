@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaTemperatureArrowDown, FaTemperatureArrowUp } from "react-icons/fa6";
 import { useApiData } from "../../Context/ApiContext";
-import MinMaxTempSkeleton from "../../Skeletons/MinMaxTempSkeleton";
+import MinMaxTempSkeleton from "../Skeletons/MinMaxTempSkeleton";
 function MinMaxTemp({ max, min }) {
   const { loading } = useApiData();
   const [activeTab, setActiveTab] = useState(false);
@@ -14,7 +14,7 @@ function MinMaxTemp({ max, min }) {
   return (
     <div
       onClick={toogle}
-      className="relative mb-3 flex h-[5.75rem] w-[95%] items-center justify-between overflow-hidden rounded-xl border-t border-black/20 bg-white/25 px-3 shadow-md shadow-black/50 dark:border-white/20 dark:bg-[#1f1f1f]"
+      className="relative mb-2.5 flex h-[5.8rem] w-[95%] items-center justify-between overflow-hidden rounded-xl border-t border-black/20 bg-white/25 px-3 shadow-md shadow-black/50 dark:border-white/20 dark:bg-[#1f1f1f]"
     >
       {/* Animated Underline */}
       <div

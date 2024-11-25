@@ -2,9 +2,9 @@ import React, { memo, useMemo } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useApiData } from "../../Context/ApiContext";
-import DailyCardsSkeleton from "../../Skeletons/DailyCardsSkeleton";
 import { getImageName } from "../../utils/getImageName";
 import { epochDayConverter } from "../../utils/TimeProvider";
+import DailyCardsSkeleton from "../Skeletons/DailyCardsSkeleton";
 
 const DailyCards = ({
   index,

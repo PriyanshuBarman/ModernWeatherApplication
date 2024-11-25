@@ -4,8 +4,8 @@ import { FaWind } from "react-icons/fa6";
 import { LiaLocationArrowSolid } from "react-icons/lia";
 import { SiRainmeter } from "react-icons/si";
 import { useApiData } from "../../Context/ApiContext";
-import SquareDivSkeleton from "../../Skeletons/SquareDivSkeleton";
-import SunriseSunsetSkeleton from "../../Skeletons/SunriseSunsetSkeleton";
+import SquareDivSkeleton from "../Skeletons/SquareDivSkeleton";
+import SunriseSunsetSkeleton from "../Skeletons/SunriseSunsetSkeleton";
 import SunriseSunset from "../Charts/SunriseSunset";
 import SquareDiv from "../SquareDiv";
 import MinMaxTemp from "./MinMaxTemp";
@@ -25,7 +25,7 @@ const WeatherDetailsSection = () => {
       )}
 
       {/* Cards Container */}
-      <div className={`overflow-hidden px-[1%] pb-5 pt-4`}>
+      <div className={`overflow-hidden px-[1%] pb-6 pt-4`}>
         <div className="flex w-full flex-wrap items-center justify-evenly gap-x-3 gap-y-1">
           <SquareDiv
             unit={currentData.humidity}

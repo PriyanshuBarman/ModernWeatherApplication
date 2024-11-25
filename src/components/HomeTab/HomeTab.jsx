@@ -1,7 +1,7 @@
 import React, { lazy, memo, Suspense } from "react";
-import DailyChartSkeleton from "../../Skeletons/DailyChartSkeleton";
-import ThreeHourlyForecastSkeleton from "../../Skeletons/ThreeHourlyForecastSkeleton";
-import WeatherDetailsSkeleton from "../../Skeletons/WeatherDetailsSkeleton";
+import DailyChartSkeleton from "../Skeletons/DailyChartSkeleton";
+import ThreeHourlyForecastSkeleton from "../Skeletons/ThreeHourlyForecastSkeleton";
+import WeatherDetailsSkeleton from "../Skeletons/WeatherDetailsSkeleton";
 import Footer from "../Footer";
 import Header from "./Header";
 import Hero from "./Hero";

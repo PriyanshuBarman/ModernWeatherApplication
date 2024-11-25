@@ -1,17 +1,12 @@
 import { Outlet } from "react-router-dom";
+import { useApiData } from "../Context/ApiContext";
 import BottomNavbar from "./BottomNavBar/BottomNavbar";
 import SearchModal from "./BottomNavBar/SearchModal";
-import NoInternet from "./NoInternet";
+import NotFound from "./Not Found";
 import ScrollToTop from "./ScrollToTop";
 import Sidebar from "./Sidebar";
-import { useApiData } from "../Context/ApiContext";
-import NotFound from "./Not Found";
-const Layout=()=> {
+const Layout = () => {
   const { err } = useApiData();
-
-  if (!navigator.onLine) {
-    return <NoInternet />;
-  }
 
   return (
     <>
@@ -25,6 +20,6 @@ const Layout=()=> {
       </div>
     </>
   );
-}
+};
 
 export default Layout;

@@ -1,86 +1,71 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import {
+  fetchForecastData,
+  fetchTimeZoneData,
+  fetchWeatherData,
+} from "../utils/api";
+import { epochDayConverter } from "../utils/TimeProvider";
 
 const ApiContext = createContext();
 
 export const ApiProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [weatherData, setWeatherData] = useState();
-  const [dailyData, setDailyData] = useState();
-  const [threeHourlyData, setThreeHourlyData] = useState();
+  const [dailyData, setDailyData] = useState([]);
+  const [threeHourlyData, setThreeHourlyData] = useState([]);
   const [timeZone, setTimeZone] = useState();
   const [err, setErr] = useState();
 
-  useEffect(() => {
-    fetchAllData("Mumbai");
-  }, []);
-
-  const fetchAllData = async (inputName) => {
+  const search = async (city) => {
+    setLoading(true);
     try {
-      setLoading(true);
-
-      // Fetch weather data
-      const weatherResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${inputName}&appid=462af939b63db301f7c3708e452b2874&units=metric`,
-      );
-      const weatherData = await weatherResponse.json();
-
-      // Check for valid weather data
-      if (!weatherResponse.ok || !weatherData.coord) {
-        throw new Error(
-          "City not found. Please check the spelling, or try searching for another city.",
-        );
-      }
-
-      // Destructure coordinates from weather data
+      const weatherData = await fetchWeatherData(city);
+      const forecastData = await fetchForecastData(city);
       const { lat, lon } = weatherData.coord;
+      const timeData = await fetchTimeZoneData(lat, lon);
 
-      // Fetch forecast data and time data in parallel
-      const forecastPromise = fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${inputName}&appid=462af939b63db301f7c3708e452b2874&units=metric`,
-      );
-      const timeDataPromise = fetch(
-        `https://api.timezonedb.com/v2.1/get-time-zone?key=BEG60N6QBE1T&format=json&by=position&lat=${lat}&lng=${lon}`,
-      );
-
-      // Await both promises
-      const [forecastResponse, timeDataResponse] = await Promise.all([
-        forecastPromise,
-        timeDataPromise,
-      ]);
-
-      // Convert responses to JSON
-      const forecastData = await forecastResponse.json();
-      const timeData = await timeDataResponse.json();
-
-      // Process forecast data
-      const dailyData = forecastData.list.filter((_, index) => index % 8 === 0);
-      const day = dailyData.slice(1, 5).concat(forecastData.list[39]);
-
-      // Set all data states
-      setErr(null);
       setWeatherData(weatherData);
-      setDailyData(day);
+      setDailyData(
+        forecastData.list
+          .filter((_, index) => index % 8 === 0)
+          .slice(1, 5)
+          .concat(forecastData.list[39]),
+      );
       setThreeHourlyData(forecastData.list);
 
-      // Update time zone if the API call was successful and differs from current
-      if (timeData.status === "OK" && timeData.zoneName !== timeZone) {
+      if (timeData.status === "OK") {
         setTimeZone(timeData.zoneName);
-      } else {
-        console.error("Failed to fetch time data");
       }
+
+      localStorage.setItem("lastCity", city);
+
+      setErr(null);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error(error);
       setErr(error.message);
     } finally {
       setLoading(false);
     }
   };
 
+  useEffect(() => {
+    const DEFAULT_CITY = "Mumbai";
+    const lastCity = localStorage.getItem("lastCity") || DEFAULT_CITY;
+
+    search(lastCity);
+  }, []);
+
   const currentData = useMemo(() => {
     if (weatherData) {
-      const epoc = weatherData.dt; // Current timestamp
-      const sunrise = weatherData.sys.sunrise; // Sunrise time
-      const sunset = weatherData.sys.sunset; // Sunset time
+      const epoc = weatherData.dt;
+      const sunrise = weatherData.sys.sunrise;
+      const sunset = weatherData.sys.sunset;
 
       return {
         temp: Math.round(weatherData.main.temp),
@@ -107,33 +92,17 @@ export const ApiProvider = ({ children }) => {
     return {};
   }, [weatherData]);
 
-  const today = useMemo(() => {
-    const date = new Date(currentData.epoc * 1000);
-    const dayName = date.toLocaleDateString("en-US", {
-      weekday: "long",
-      timeZone: timeZone,
-    });
-    return dayName;
-  }, [timeZone]);
-
-  const search = (e, city) => {
-    e.preventDefault();
-    if (city) {
-      fetchAllData(city);
-    }
-  };
-
   return (
     <ApiContext.Provider
       value={{
-        err,
         loading,
         currentData,
-        search,
         dailyData,
         threeHourlyData,
         timeZone,
-        today,
+        today: epochDayConverter(currentData.epoc),
+        err,
+        search,
       }}
     >
       {children}

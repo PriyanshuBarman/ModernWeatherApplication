@@ -6,8 +6,8 @@ import { ApiProvider } from "./Context/ApiContext";
 import { SearchModalProvider } from "./Context/SearchModalContext";
 import { SidebarProvider } from "./Context/SidebarContext";
 import { ThemeProvider } from "./Context/ThemeContext";
-import ForecastTabSkeleton from "./Skeletons/ForecastTabSkeleton";
-import PreviewSkeleton from "./Skeletons/PreviewSkeleton";
+import PreviewSkeleton from "./components/Skeletons/PreviewSkeleton";
+import ForecastTabSkeleton from "./components/Skeletons/ForecastTabSkeleton";
 const ForecastTab = lazy(() => import("./components/ForecastTab/ForecastTab"));
 const Preview = lazy(() => import("./components/Preview"));
 

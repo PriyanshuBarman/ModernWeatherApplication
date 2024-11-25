@@ -14,8 +14,8 @@ import React, { memo, useEffect, useRef, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { useApiData } from "../../Context/ApiContext";
 import { useTheme } from "../../Context/ThemeContext";
-import DailyChartSkeleton from "../../Skeletons/DailyChartSkeleton";
 import { epochDayConverter } from "../../utils/TimeProvider";
+import DailyChartSkeleton from "../Skeletons/DailyChartSkeleton";
 
 // Register chart.js components and plugins
 ChartJS.register(

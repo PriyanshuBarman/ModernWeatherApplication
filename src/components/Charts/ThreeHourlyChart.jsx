@@ -14,8 +14,9 @@ import React, { memo } from "react";
 import { Line } from "react-chartjs-2";
 import { useApiData } from "../../Context/ApiContext";
 import { useTheme } from "../../Context/ThemeContext";
-import ThreeHourlyChartSkeleton from "../../Skeletons/ThreeHourlyChartSkeleton";
+
 import { epochTimeConverter } from "../../utils/TimeProvider";
+import ThreeHourlyChartSkeleton from "../Skeletons/ThreeHourlyChartSkeleton";
 
 ChartJS.register(
   CategoryScale,
