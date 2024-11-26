@@ -54,8 +54,16 @@ const SearchModal = () => {
   };
 
   const SearchSuggestions = [
-    "New York", "London", "Paris", "Tokyo", "Moscow", "Berlin",
-    "Mumbai", "Dubai", "Sydney", "Shanghai"
+    "New York",
+    "London",
+    "Paris",
+    "Tokyo",
+    "Moscow",
+    "Berlin",
+    "Mumbai",
+    "Dubai",
+    "Sydney",
+    "Shanghai",
   ];
 
   return (
@@ -68,17 +76,21 @@ const SearchModal = () => {
         }`}
       ></div>
       <div
-        className={`fixed bottom-0 z-50 flex h-[75%] w-full flex-col items-center rounded-t-3xl border-t border-black/40 bg-[#f9f9f9] pt-2.5 font-oxanium text-white transition-all duration-100 ease-linear dark:border-t dark:border-white/50 dark:bg-[#1e1e1e] md:w-[375px] ${
+        className={`fixed bottom-0 z-50 flex h-[75%] w-full flex-col items-center rounded-t-3xl border-t border-black/40 bg-[#f9f9f9] pt-2.5 font-oxanium text-white transition-all duration-150 ease-linear dark:border-t dark:border-white/50 dark:bg-[#1e1e1e] md:w-[375px] ${
           isModalOpen ? "translate-y-0" : "translate-y-[100%]"
         }`}
       >
         <div
           onClick={closeModal}
-          className="absolute h-[.2rem] w-[20%] rounded-full bg-black/25 dark:bg-white/35"
+          className={`absolute h-[.2rem] rounded-full bg-black/25 dark:bg-white/35 ${
+            isModalOpen ? "w-[20%] transition-all duration-700" : "w-0"
+          }`}
         ></div>
         <button
           onClick={closeModal}
-          className="absolute bottom-4 z-10 flex size-10 items-center justify-center rounded-full bg-blue-500 text-white dark:bg-white/35 dark:text-black dark:hover:bg-gray-700"
+          className={`absolute bottom-4 z-10 flex size-10 items-center justify-center rounded-full bg-blue-500 text-white dark:bg-white/35 dark:text-black dark:hover:bg-gray-700 ${
+            isModalOpen ? "scale-100 transition-all duration-500" : "scale-0"
+          }`}
         >
           <IoClose className="size-[70%]" />
         </button>
@@ -107,7 +119,7 @@ const SearchModal = () => {
           {/* SEARCH HISTORY */}
           {searchHistory.length > 0 && (
             <div className="relative w-full">
-              <div className="sticky top-0 mb-3.5 flex w-full items-center justify-between bg-[#f9f9f9] pb-0.5 pt-3 dark:bg-[#1e1e1e]">
+              <div className="sticky top-0 z-10 mb-3.5 flex w-full items-center justify-between bg-[#f9f9f9] pb-0.5 pt-3 dark:bg-[#1e1e1e]">
                 <h1 className="text-sm font-semibold text-black/80 dark:text-white/80">
                   Recent searches
                 </h1>
@@ -122,7 +134,11 @@ const SearchModal = () => {
                 {searchHistory.map((item, i) => (
                   <li
                     key={i}
-                    className="flex items-center justify-between gap-0.5 overflow-hidden rounded-full bg-black/15 py-0.5 pl-3 dark:bg-white/10"
+                    className={`flex items-center justify-between gap-0.5 overflow-hidden rounded-full bg-black/15 py-0.5 pl-3 dark:bg-white/10 ${
+                      isModalOpen
+                        ? "scale-100 transition-all delay-0 duration-700"
+                        : "scale-0"
+                    }`}
                   >
                     <span onClick={(e) => handleSubmit(e, item)}>{item}</span>
                     <button
@@ -146,7 +162,11 @@ const SearchModal = () => {
                 <li
                   key={i}
                   onClick={(e) => handleSubmit(e, item)}
-                  className="rounded-full px-4 outline outline-1 outline-black/50 transition duration-200 ease-in-out hover:bg-gray-300 dark:bg-transparent dark:outline dark:outline-white/40 dark:hover:bg-white/25"
+                  className={`rounded-full px-4 outline outline-1 outline-black/50 transition duration-200 ease-in-out hover:bg-gray-300 dark:bg-transparent dark:outline dark:outline-white/40 dark:hover:bg-white/25 ${
+                    isModalOpen
+                      ? "scale-100 transition-all delay-200 duration-700"
+                      : "scale-0"
+                  }`}
                 >
                   {item}
                 </li>

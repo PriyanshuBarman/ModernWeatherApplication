@@ -64,8 +64,8 @@ const ForecastTab = () => {
                   isDayOrNight={item.sys.pod}
                 />
               ))}
-            <div className="mb-20 mt-3 flex w-full flex-col items-center justify-center gap-2">
-              <h1 className="flex gap-3 font-semibold text-blue-500">
+            <div className=" mt-6 mb-16 flex w-full flex-col items-center justify-center">
+              <h1 className="flex gap-3 italic text-lg text-blue-600 dark:text-white">
                 Swipe Left
                 <GiSideswipe className="size-5" />
               </h1>

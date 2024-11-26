@@ -51,15 +51,15 @@ const WeatherDetailsSection = () => {
           ) : (
             <>
               {/* Wind Direction */}
-              <div className="relative mb-4 flex h-[7.6rem] w-[8.9rem] flex-col items-center justify-between rounded-[1.1em] rounded-tl-md bg-white/25 pb-1 pr-3 pt-3 shadow-[3px_5px_5px_.2px] shadow-black/50 active:shadow-[inset_2px_3px_5px_.1px] dark:bg-black/5 dark:text-white dark:shadow-black">
+              <div className="relative mb-4 flex h-[7.6rem] w-[8.9rem] flex-col items-center justify-between rounded-[1.1em] rounded-tl-md bg-white/25 pb-1 pr-3 pt-3 shadow-[3px_5px_5px_.2px] shadow-black/50 active:shadow-[inset_2px_3px_5px_.1px] dark:bg-black/15 dark:text-white dark:shadow-black">
                 <div className="w-full">
-                  <h1 className="text- flex h-[1.55rem] w-[79%] items-center rounded-r-md bg-gradient-to-l from-transparent to-black/25 pl-3 text-start text-[.85em] font-[500] italic leading-3 dark:rounded-l-sm dark:to-white/40 dark:text-white/80">
+                  <h1 className="text- flex h-[1.55rem] w-[79%] items-center rounded-r-md bg-gradient-to-l from-transparent to-black/25 pl-3 text-start text-[.85em] font-[500] italic leading-3 dark:rounded-l-sm dark:to-white/40 dark:text-white">
                     Wind Direction
                   </h1>
                 </div>
                 <div className="mb-3 flex w-full items-center justify-center">
                   <LiaLocationArrowSolid
-                    className="h-full w-[4.5rem] text-black/60 dark:text-slate-200"
+                    className="h-full w-[4.5rem] text-black/60 dark:text-white/80"
                     style={{
                       transform: `rotate(${currentData.windDirection}deg)`,
                     }}

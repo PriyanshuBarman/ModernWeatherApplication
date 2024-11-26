@@ -8,7 +8,7 @@ const BottomNavbar = () => {
   const { openModal } = useSearchModal();
   return (
     <>
-      <nav className="fixed bottom-0 z-40 m-auto flex h-[2.85rem] w-full items-stretch justify-around rounded-t-2xl border-t border-black/30 bg-[#fcfbfb] px-2 py-0.5 backdrop-blur-xl dark:border-white/20 dark:bg-[#1b1b1b] md:w-[375px]">
+      <nav className=" bottomToTop fixed bottom-0 z-40 m-auto flex h-[2.85rem] w-full items-stretch justify-around rounded-t-2xl border-t border-black/30 bg-[#fcfbfb] px-2 py-0.5 backdrop-blur-xl dark:border-white/20 dark:bg-[#1b1b1b] md:w-[375px]">
         <HomeTab />
 
         {/* Search Tab */}

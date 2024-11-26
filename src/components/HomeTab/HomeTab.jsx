@@ -1,13 +1,14 @@
 import React, { lazy, memo, Suspense } from "react";
+import Footer from "../Footer";
 import DailyChartSkeleton from "../Skeletons/DailyChartSkeleton";
 import ThreeHourlyForecastSkeleton from "../Skeletons/ThreeHourlyForecastSkeleton";
 import WeatherDetailsSkeleton from "../Skeletons/WeatherDetailsSkeleton";
-import Footer from "../Footer";
 import Header from "./Header";
 import Hero from "./Hero";
 const ThreeHourlyForecast = lazy(() => import("./ThreeHourlyForecast"));
 const ThreeHourlyChart = lazy(() => import("../Charts/ThreeHourlyChart"));
 const WeatherDetailsSection = lazy(() => import("./WeatherDetailsSection"));
+
 const HomeTab = () => {
   return (
     <div className="container flex h-full w-full flex-col font-oxanium text-black dark:bg-[#141414] dark:text-white">

@@ -117,11 +117,11 @@ const SunriseSunset = () => {
 
           {/* Sunrise Sunset */}
           <div className="absolute right-0 flex h-5 w-full items-center justify-center">
-            <h1 className="absolute left-7 flex flex-col gap-y-1 text-[.88rem] font-[600] italic dark:text-white/70">
+            <h1 className="absolute left-7 flex flex-col gap-y-1 text-[.88rem] font-[600] italic dark:text-white/80">
               Sunrise
               <span className="text-[.9em] font-[500]">{sunrise}</span>
             </h1>
-            <h1 className="absolute right-7 flex flex-col gap-y-1 text-[.88rem] font-[600] italic dark:text-white/70">
+            <h1 className="absolute right-7 flex flex-col gap-y-1 text-[.88rem] font-[600] italic dark:text-white/80">
               Sunset
               <span className="text-[.9em] font-[500]">{sunset}</span>
             </h1>

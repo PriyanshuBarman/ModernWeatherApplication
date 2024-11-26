@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SquareDivSkeleton() {
   return (
-    <div className="rounded-tl-mdborder relative mb-4 flex h-[7.6rem] w-[8.9rem] flex-col items-center justify-between rounded-[1.2em] rounded-tl-sm border-white/10 bg-white/25 pb-1 pr-3 pt-3 shadow-[3px_5px_5px_.2px] shadow-black/50 active:shadow-xl dark:bg-black/5 dark:text-white dark:shadow-[3px_5px_9px_.2px_black]">
+    <div className="rounded-tl-mdborder relative mb-4 flex h-[7.6rem] w-[8.9rem] flex-col items-center justify-between rounded-[1.2em] rounded-tl-sm border-white/10 bg-white/25 pb-1 pr-3 pt-3 shadow-[3px_5px_5px_.2px] shadow-black/50 active:shadow-xl dark:bg-black/20 dark:text-white dark:shadow-[3px_5px_9px_.2px_black]">
       <div className="w-full">
         <div className="h-7 w-[79%] animate-pulse rounded-md bg-black/20 dark:bg-white/15"></div>
       </div>

@@ -21,25 +21,17 @@ const Sidebar = () => {
       {/* Overlay to close sidebar when clicked outside */}
       <div
         onClick={closeSidebar}
-        className={`absolute inset-0 left-0 z-50 h-full w-full bg-black/20 text-base transition-opacity md:w-[375px] ${
+        className={`fixed inset-0 left-0 z-50 h-screen w-full bg-black/40 text-base transition-opacity md:hidden md:w-[375px] ${
           isSidebarOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
         {/* Sidebar container */}
         <aside
           onClick={(e) => e.stopPropagation()}
-          className={`Sidebar absolute left-0 top-0 z-50 h-full w-2/4 transform bg-gray-100 text-black transition-transform duration-300 ${
+          className={`Sidebar fixed left-0 top-0 z-50 h-full w-2/4 transform rounded-r-[4rem] bg-gray-100 text-black transition-transform duration-300 ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } dark:bg-[#262626] dark:text-white`}
+          } dark:bg-[#1a1a1a] dark:text-white`}
         >
-          {/* Close Icon */}
-          <button
-            onClick={closeSidebar}
-            className="absolute right-4 top-2 flex h-8 w-8 items-center justify-center rounded-md bg-white/80 p-1 text-black/75 shadow-md dark:bg-white/10 dark:text-white"
-          >
-            <FaChevronLeft className="size-[70%]" />
-          </button>
-
           {/* === Menu Items === */}
           <ul className="mt-16 space-y-2">
             {/* Home Tab */}
@@ -61,7 +53,7 @@ const Sidebar = () => {
 
             {/* Search Tab (opens modal instead of navigating) */}
             <li
-              className="flex cursor-pointer items-center p-4 hover:bg-gray-200 dark:hover:bg-gray-700"
+              className={`flex cursor-pointer items-center p-4 hover:bg-gray-200 dark:hover:bg-gray-700 ${isSidebarOpen ? "scale-y-100 transition-all delay-150 duration-500" : "scale-y-0"}`}
               onClick={() => {
                 closeSidebar();
                 openModal();
@@ -74,13 +66,7 @@ const Sidebar = () => {
             <li>
               <NavLink
                 to="/forecast"
-                className={({ isActive }) =>
-                  `mr-4 flex cursor-pointer items-center rounded-r-full p-4 ${
-                    isActive
-                      ? "bg-blue-500 text-white dark:bg-blue-600"
-                      : "hover:bg-gray-200 dark:hover:bg-gray-700"
-                  }`
-                }
+                className={`dark:hover:bg-gray-700" } mr-4 flex cursor-pointer items-center rounded-r-full p-4 hover:bg-gray-200 ${isSidebarOpen ? "scale-y-100 transition-all delay-150 duration-500" : "scale-y-0"}`}
                 onClick={closeSidebar}
               >
                 <TiChartLine className="mr-2 size-6" /> Forecast
@@ -89,7 +75,7 @@ const Sidebar = () => {
 
             {/* Theme Tab with Expandable Options */}
             <li
-              className={`cursor-pointer py-4 pl-4 ${
+              className={`cursor-pointer py-4 pl-4 ${isSidebarOpen ? "scale-y-100 transition-all delay-150 duration-500" : "scale-y-0"} ${
                 isThemeTabOpen
                   ? "bg-gray-200 dark:bg-white/5"
                   : "hover:bg-gray-200 dark:hover:bg-white/5"
